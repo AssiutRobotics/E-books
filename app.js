@@ -58,7 +58,7 @@ arr_of_taps.forEach((tap,index) => {
         account_sub_menu.classList.remove('liftUp');
         account_sub_menu.classList.add('dropDown');
     })
-    account_sub_menu.addEventListener('mouseleave', () => {
+    list_of_my_account.addEventListener('mouseleave', () => {
             account_sub_menu.classList.remove('dropDown');
         account_sub_menu.classList.add('liftUp');
         
@@ -79,7 +79,7 @@ arr_of_taps.forEach((tap,index) => {
             
         })
     })
-    list_of_lists.forEach((container,index) => {
+    list_of_lists_container.forEach((container,index) => {
         container.addEventListener('mouseleave', () => {
             list_of_lists[index].classList.remove('dropDown');
             list_of_lists[index].classList.add('liftUp');
