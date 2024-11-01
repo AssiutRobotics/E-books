@@ -104,6 +104,7 @@ arr_of_taps.forEach((tap,index) => {
     let next = document.getElementById('next')
     let prev = document.getElementById('prev')
     //////////////////////////////////////////////////////
+    console.log(images);
     
     // next function
     if(index == images.length - 1)
@@ -113,37 +114,56 @@ arr_of_taps.forEach((tap,index) => {
         prev.disabled = false   
         if(index < images.length - 1){
             console.log(index)
-    
-    
-            next.disabled = false
-            console.log(index)
-            images[index].classList.remove('visible')
-            buttons[index].classList.remove('Active')
-            index++
-            images[index].classList.add('visible')
-            buttons[index].classList.add('Active')
-            if(index == images.length - 1)
-                next.disabled = true 
+            if(index == -1){
+                images[images.length - 1].classList.remove('visible')
+                buttons[images.length - 1].classList.remove('Active')
+                index = 0;
+                images[index].classList.add('visible')
+                buttons[index].classList.add('Active')
+            }
+            else{
+                next.disabled = false
+                console.log(index)
+                images[index].classList.remove('visible')
+                buttons[index].classList.remove('Active')
+                index++
+                images[index].classList.add('visible')
+                buttons[index].classList.add('Active')
+                if(index == images.length - 1)
+                    // next.disabled = true 
+                index = -1;
+            }
         }
     }
-    // prev function
-    if(index == 0)
-        prev.disabled = true
+    // prev functions
     function Prev(){
         next.disabled = false
+        console.log(index);
     
-        if(index > 0){
-        
-            prev.disabled = false   
-            images[index].classList.remove('visible')
-            buttons[index].classList.remove('Active')
-            index--
-            images[index].classList.add('visible')
-            buttons[index].classList.add('Active')
-            if(index == 0)
-                prev.disabled = true   
-                
+        if(index >= 0){
+            
+            if(index == 0){
+                images[index].classList.remove('visible')
+                buttons[index].classList.remove('Active')
+                index = 3;
+                images[index].classList.add('visible')
+                buttons[index].classList.add('Active')
+            }
+            else{
+                prev.disabled = false   
+                images[index].classList.remove('visible')
+                buttons[index].classList.remove('Active')
+                index--
+                images[index].classList.add('visible')
+                buttons[index].classList.add('Active')
+                if(index == 0){
+                    // prev.disabled = true
+                    // index = 4;   
+                }
+            }
         }
+        console.log(index);
+
     }
     // button function 
     function moving(target){
