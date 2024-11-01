@@ -91,8 +91,8 @@ nav ul li a, nav ul li a i {
     transition: .5s;
 }
 
-nav ul li a:hover,
-nav ul li a:hover i {
+nav ul li div:hover,
+nav ul li div:hover i {
     color: #62ab00;
 }
 
@@ -112,7 +112,7 @@ nav ul li a:hover i {
     background-color: #fff;
     width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: 5;
     padding: 0 0.5rem;
 }
 
@@ -207,17 +207,17 @@ header .frist-row ul span {
     color: #282828;
 }
 
-header .frist-row ul a i {
+header .frist-row ul div i {
     font-size: small
 }
 
-header .frist-row ul a span,
-header .frist-row ul a i {
+header .frist-row ul div span,
+header .frist-row ul div i {
     transition: .5s;
 }
 
-header .frist-row ul a:hover,
-header .frist-row ul a:hover span,
+header .frist-row ul  div:hover,
+header .frist-row ul  div:hover span,
 header .frist-row ul .active {
     color: #62ab00;
 }
@@ -402,61 +402,156 @@ header .Second-row .sign-cart .cart span {
     padding: 0.5rem;
     color: #666666  ;
 }
-
-
+#SPECIALS{
+    display: flex ;
+    flex-direction: row;
+    transform: translateX(-50%);
+    gap: 10px;
+    justify-content: space-between;
+    width: fit-content;
+}
+#SPECIALS div{
+    margin: 1rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    text-align: center;
+}
+#SPECIALS div div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#SPECIALS div div div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    width: 100%;
+}
+#SPECIALS div div div h5{
+    color: #62ab00;
+    font-size: x-large;
+}
+#SPECIALS div div div p{
+    color: #bebdbd;
+    text-decoration: line-through;
+}
+#SPECIALS  div img{
+    width: 10rem;
+    height: 10rem;
+}
 /*End Header*/
 
 /*Start Main*/
-main {
-    margin-top: 10px;
+
+main{
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-
-main .circles,
-main i {
+main > button:first-child{
+    left: 1rem;
+}
+main > button:last-child{
+    right: 1rem ;
+}
+main > button{
     position: absolute;
-}
-
-main img {
-    width: 100%;
-}
-
-main i {
-    padding: 20px;
-    background-color: white;
+    top: 40%;
+    z-index: 3;
+    width:  4rem;
+    height: 4rem;
     border-radius: 50%;
-    bottom: 50%;
-    transform: translateY(50%);
-    cursor: pointer;
+    font-size: x-large;
+    border: 0;
 }
-
-main i:hover {
+main > button:hover{
+    
     color: #62ab00;
 }
-
-main .left {
-    left: 30px;
-}
-
-main .right {
-    right: 30px;
-}
-
-main .circles {
-    bottom: 20px;
-    left: 48%;
-
+#imgContainer{
+    position: relative;
+    width: 100vw;
+    height: 60vh;
     display: flex;
-    gap: 15px;
+    justify-content: center;
+    padding-top: 1%;
+}
+#imgContainer img{
+    width: 100vw;
+    height: 60vh;
+    position: absolute;
+    box-shadow: 0px 0px 3px #000;
+    z-index: 1;
+    opacity: 0;
+}   
+.visible{
+    animation: visible 0.5s forwards linear;
 }
 
-main .circles span {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    background-color: black;
+@keyframes visible {
+    0%{
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+    25%{
+        transform: translateY(25px);
+    }
+    50%{
+        transform: translateY(-15px);
+    }
+    75%{
+        transform: translateY(5px);
+    }
+    100%{
+        transform: translateY(00%);
+        opacity: 1;
+    }
 }
 
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+/* ----------------------------------------------button section----------------------------------------------------------------------------------- */
+#buttonContainer{
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    transform: translateX(-50%);
+    bottom: 1rem;
+    z-index: 1;
+    
+}
+
+#buttonContainer button{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 50% ;
+}
+#buttonContainer button:hover{
+    opacity: 0.7;
+}
+
+#numbers{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.Active{
+    transform: scale(1.25);
+    background-color: #0f0 !important;
+}
 /* Small */
 @media (max-width:492px) {
     main img {
@@ -464,7 +559,47 @@ main .circles span {
 
     }
 }
+#details{
+    z-index: 2;
+    text-align: left; 
+    width: 60vw; 
+    position: absolute; 
+    top: 20%; 
+    left: 10%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 30%;
+    font-size: xx-large;
+}
+#details h1{
+    color: #333;
+}
+#details h2{
+    font-weight: 500;
+    color: #333;
 
+}
+#details h3{
+    font-weight: 100;
+    color: #777777;
+}
+#shop_now{
+    margin-top: 2rem;
+    width: 20%;
+    height: 40%;
+    color: #62ab00;
+    border: 2px solid #62ab00;
+    text-align: center;
+    font-size: large;
+    padding: 1rem;
+    transition: color 0.5s, background-color 0.5s;
+}
+
+#shop_now:hover{
+    background-color: #62ab00;
+    color: #fff;
+}
 
 /*ُEnd Main*/
 

@@ -54,11 +54,11 @@ arr_of_taps.forEach((tap,index) => {
     let account_sub_menu = document.getElementById('account_sub_menu');
     console.log(list_of_my_account,account_sub_menu);
     
-    list_of_my_account.addEventListener('mouseover', () => {
+    list_of_my_account.addEventListener('click', () => {
         account_sub_menu.classList.remove('liftUp');
         account_sub_menu.classList.add('dropDown');
     })
-    account_sub_menu.addEventListener('mouseout', () => {
+    account_sub_menu.addEventListener('mouseleave', () => {
             account_sub_menu.classList.remove('dropDown');
         account_sub_menu.classList.add('liftUp');
         
@@ -73,16 +73,14 @@ arr_of_taps.forEach((tap,index) => {
     list_of_lists_container.forEach((container,index) => {
         console.log(container,index);
         
-        container.addEventListener('mouseover', () => {
-            console.log('hovered', list_of_lists[index]);
+        container.addEventListener('click', () => {
             list_of_lists[index].classList.remove('liftUp');
             list_of_lists[index].classList.add('dropDown');
             
         })
-        console.log(1);
     })
-    list_of_lists_container.forEach((container,index) => {
-        container.addEventListener('mouseout', () => {
+    list_of_lists.forEach((container,index) => {
+        container.addEventListener('mouseleave', () => {
             list_of_lists[index].classList.remove('dropDown');
             list_of_lists[index].classList.add('liftUp');
         })
@@ -91,21 +89,98 @@ arr_of_taps.forEach((tap,index) => {
 }
 // make the slider image
 {
-    let img = document.getElementById('slider_img');
-    let arr_of_navigators = document.getElementsByClassName('navigator');
-    // It is supposed to be an array of images that comes form backend but for now I will use this array
-    let arr_of_images = ['images/main.webp','images/slider2.jpg'];
-    for(let i = 0; i < arr_of_images.length; i++){
-        if(arr_of_images[i].src == img.src){
-            for(let counter_for_navigator = 0; counter_for_navigator < arr_of_navigators.length; counter_for_navigator++){
-                if(counter_for_navigator == i){
-                    arr_of_navigators[counter_for_navigator].classList.add('active');
-                }else{
-                    arr_of_navigators[counter_for_navigator].classList.remove('active');
-                }
-            }
-        }
-    }  // runs the navigator with respect to the imgs
-
+    let index = 0;
+    let images = document.querySelectorAll('.slider_img')   
+    let buttonContainer = document.getElementById('numbers')
+    let buttons = []
+    for(let i = 0; i <images.length;i++){
+        let Button = document.createElement('button')
+        Button.classList.add('button_of_slider')
+        buttonContainer.appendChild(Button)
+        buttons.push(Button)
+    }
+    buttons[0].classList.add('Active')
+    images[0].classList.add('visible')
+    let next = document.getElementById('next')
+    let prev = document.getElementById('prev')
+    //////////////////////////////////////////////////////
     
+    // next function
+    if(index == images.length - 1)
+    next.disabled = true 
+    
+    function Next(){
+        prev.disabled = false   
+        if(index < images.length - 1){
+            console.log(index)
+    
+    
+            next.disabled = false
+            console.log(index)
+            images[index].classList.remove('visible')
+            buttons[index].classList.remove('Active')
+            index++
+            images[index].classList.add('visible')
+            buttons[index].classList.add('Active')
+            if(index == images.length - 1)
+                next.disabled = true 
+        }
+    }
+    // prev function
+    if(index == 0)
+        prev.disabled = true
+    function Prev(){
+        next.disabled = false
+    
+        if(index > 0){
+        
+            prev.disabled = false   
+            images[index].classList.remove('visible')
+            buttons[index].classList.remove('Active')
+            index--
+            images[index].classList.add('visible')
+            buttons[index].classList.add('Active')
+            if(index == 0)
+                prev.disabled = true   
+                
+        }
+    }
+    // button function 
+    function moving(target){
+        if(target == images.length - 1)
+        {
+            next.disabled = true
+            prev.disabled = false 
+        }   
+        else if(target == 0){
+            prev.disabled = true
+            next.disabled = false
+        }
+        else{
+            next.disabled = false
+            prev.disabled = false
+        }
+        console.log(index)
+        console.log(target)
+        images[index].classList.remove('visible')
+        buttons[index].classList.remove('Active')
+        index = target
+        images[index].classList.add('visible')
+        buttons[index].classList.add('Active')
+    }
+    console.log(buttons)
+    ///////////////////////////////////////////////////////
+    
+    document.getElementById('next').addEventListener('click',() => Next())
+    document.getElementById('prev').addEventListener('click',() => Prev())
+    for(let i = 0; i < buttons.length;i++){
+        buttons[i].addEventListener('click', () => {moving(i)})
+    }
+    function auto(x = 5000){
+        let interval = setInterval(() => {
+            Next()
+        }, x);
+        return interval;
+    }
+    auto()
 }

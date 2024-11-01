@@ -34,11 +34,11 @@
                     </a>
                 </li>
                 <li id="my_account">
-                    <a href="" id="account">
+                    <div style="cursor: pointer;" href="" id="account">
                         <i class="fa-solid fa-user"></i>
                         <span>My Account</span>
                         <i class="down fa-solid fa-chevron-down"></i>
-                    </a>
+                    </div>
                     <div id="account_sub_menu" class=" liftUp">
                         <span>Sign in</span>
                         <span>Register</span>
@@ -76,23 +76,23 @@
 
                 <ul>
                     <li class="sub_menu_container">
-                        <a class="link" href="">
-                            <span class="active">HOME</span>
-                            <i class="active fa-solid fa-chevron-down"></i>
-                        </a>
-                        <div id="HOME" class=" sub_menu">
+                        <div class="link" style="cursor: pointer;" href="">
+                            <span>HOME</span>
+                            <i class=" fa-solid fa-chevron-down"></i>
+                        </div>
+                        <container id="HOME" class=" sub_menu">
                             <span>Home 1</span>
                             <span>Home 2</span>
                             <span>Home 3</span>
                             <span>Home 4</span>
-                        </div>
+                        </container>
                     </li>
                     <li class="sub_menu_container">
-                        <a href="">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>CATALOG</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
-                        <div id="CATALOG" class="   sub_menu">
+                        </div>
+                        <container id="CATALOG" class="   sub_menu">
                             <div>
                                 <h1>MOBILE PHONES</h1>
                                 <div>
@@ -123,44 +123,60 @@
                                     <span>Product Pages</span>
                                 </div>
                             </div>
-                        </div>
+                        </container>
                     </li>
                     <li class="sub_menu_container">
-                        <a href="">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>SPECIALS</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
-                        <div id="SPECIALS" class="  sub_menu">
-                            <!-- <div>
-                                <h1>MOBILE PHONES</h1>
+                        </div>
+                        <container id="SPECIALS" class="  sub_menu">
+                            <div>
+
+                                <img src="./images/module1.webp" alt="">
+
                                 <div>
-                                    <img src="#" alt="">
                                     <h5>A Million Little
                                         Pieces -James Frey</h5>
                                     <div class="price">
+                                        <h5 class="price">$111</h5>
+                                        <p class="prev_price">$112</p>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <h1>SMARTWATCHES</h1>
+
+                                <img src="./images/product10.webp" alt="">
+
                                 <div>
-                                    <span>Home </span>
+                                    <h5>A Million Little
+                                        Pieces -James Frey</h5>
+                                    <div class="price">
+                                        <h5 class="price">$111</h5>
+                                        <p class="prev_price">$112</p>
+                                    </div>
                                 </div>
                             </div>
                             <div>
-                                <h1>SMART TVS</h1>
+                                <img src="./images/playing-video.avif" alt="">
+
                                 <div>
-                                    <span>Home </span>
+                                    <h5>A Million Little
+                                        Pieces -James Frey</h5>
+                                    <div class="price">
+                                        <h5 class="price">$111</h5>
+                                        <p class="prev_price">$112</p>
+                                    </div>
                                 </div>
-                            </div> -->
-                        </div>
+                            </div>
+                        </container>
                     </li>
                     <li class="sub_menu_container">
-                        <a href="">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
-                        <div id="PAGES" class=" sub_menu">
+                        </div>
+                        <container id="PAGES" class=" sub_menu">
                             <span style="">
                                 <p>
                                     COLLECTION PAGES
@@ -177,14 +193,14 @@
                             <span>WHISHLIST</span>
                             <span>LOGIN</span>
                             <span>REGISTER</span>
-                        </div>
+                        </container>
                     </li>
                     <li class="sub_menu_container">
-                        <a href="">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>    
-                        <div id="PRODUCT_PAGES" class=" sub_menu">
+                        </div>    
+                        <container id="PRODUCT_PAGES" class=" sub_menu">
                             <span>HORIZONTAL THUMBS</span>
                             <span>BERTICAL THUMBS</span>
                             <span>VERTICAL THUMBS-RIGHT</span>
@@ -194,7 +210,7 @@
                             <span>DEAL COUNTER</span>
                             <span>TRUST BADGE</span>
                             <span>CUSTOM SUMMARY</span>
-                        </div>
+                        </container>
                     </li>
                 </ul>
             </div>
@@ -226,13 +242,28 @@
         </div>
     </header>
     <main>
-        <img src="images/main.webp" id="slider_image" alt="">
-        <i class="left fa-solid fa-chevron-left"></i>
-        <div class="circles">
-            <span class="navigator one activated"></span>
-            <span class="navigator two"></span>
+        <button id="prev"><i class="fa-solid fa-angle-left"></i></button>
+        <div id="slider">
+                <div id="imgContainer">
+                    <div id="details" >
+                    <h2 >name of the author</h2>
+                    <h1 >name of the book</h1>
+                    <h3 >name of the description</h3>
+                    <button id="shop_now">Shopping Now</button>
+                </div>
+                <img src="./images/ads3.avif" class="slider_img"  alt="1" >
+                <img src="./images/ads2.webp"  class="slider_img" alt="2">
+                <img src="./images/img-buttom.webp"  class="slider_img"alt="3">
+                <img src="./images/main.webp"  class="slider_img"  alt="4" >
+            </div>
+            <div id="buttonContainer" >
+                
+            <div id="numbers">
+            </div>
+                
+            </div>
         </div>
-        <i class=" right fa-solid fa-chevron-right"></i>
+        <button id="next"><i class="fa-solid fa-angle-right"></i></button>
     </main>
     <div class="features">
         <div class="container">

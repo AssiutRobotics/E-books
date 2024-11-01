@@ -6,3 +6,9 @@ Task 1: Complete the slider_image App.
 Task 2: Complete dropDown lists.
 - Just repeat what you did with the account with others you can take it copy and give a class and start to customize
 - Repeat Js code to make action when hover OR try to collect all data in a form that allows you to make loops on them 
+
+
+
+4 apis
+
+search
