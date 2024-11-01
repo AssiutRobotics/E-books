@@ -1,87 +1,52 @@
-const express=require('express')
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-require('dotenv').config()
+dotenv.config();
 
-const app=express();
+const app = express();
 
-// connect to mongo DB
-const mongoose=require('mongoose')
+// Middleware setup
+app.use(cors()); // Allow all CORS requests
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-mongoose.connect(process.env.MONGO_URL).then(
-    ()=>{
-        console.log("mongoose connected");
-         
-    }
-).catch(error=>{
-    console.log(error);
-    
-})
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URL)
+    .then(() => console.log("MongoDB connected successfully"))
+    .catch(error => console.error("MongoDB connection error:", error));
 
+// Import user router
+const userRouter = require('./routers/userRouter');
+app.use("/user", userRouter);
 
-// here import cors for accept all requested
-
-const cors=require("cors")
-// use middleware for cors
-app.use(cors());
-
-
-// here import body parser 
-
-// use middlleware for parse body to parse the body of json body or form data url encoded
-const body_parser=require("body-parser");
-const { error } = require('console');
-const { type } = require('os');
-app.use(body_parser.urlencoded({extended:true}));
-app.use(body_parser.json())
-
-// use middlleware to accpet req start with user
-
-
-// import user router
-const user_router=require('./routers/userRouter');
-app.use("/user",user_router)
-
-
-
-
-app.post("/test",async(req,res)=>{
-
+// Test endpoint (for development/debugging purposes)
+app.post("/test", async (req, res) => {
     try {
-        
+        const { name, num } = req.body;
 
-    const {name,num}=req.body;
-    console.log(req.body);
-    
-    const x=mongoose.Schema({
-        name:{
-            type:String
-        },
-        num:{
-            type:Number
-        }
-    })
+        // Define schema inline only for quick testing (move to models for production use)
+        const TestSchema = new mongoose.Schema({
+            name: { type: String, required: true },
+            num: { type: Number, required: true }
+        });
+        const TestModel = mongoose.model("TestUser", TestSchema);
 
-    const model=mongoose.model("User",x);
+        const newTestUser = new TestModel({ name, num });
+        await newTestUser.save();
 
-    const newModel=await new model({
-        name,
-        num
-    })
+        const users = await TestModel.find({ name });
+        res.status(200).json(users);
+    } catch (error) {
+        console.error("Error in /test route:", error);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+});
 
-    newModel.save();
-
-    const users=await model.find({name});
-
-    res.json(users)
-} catch (error) {
-        console.log(error);
-        
-}
-})
-
-app.listen(process.env.PORT,()=>{
-
-    console.log("server run successfully and listen to Port:","http://localhost:3000/");
-    
-})
-
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
