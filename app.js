@@ -204,3 +204,29 @@ arr_of_taps.forEach((tap,index) => {
     }
     auto()
 }
+// make the search bar
+{
+    let search_bar = document.getElementById('search_bar');
+    let search_btn = document.getElementById('search_btn');
+    let found_data_container = document.getElementById('found_data_container');
+    search_bar.addEventListener('focus', () => {
+        found_data_container.classList.remove('disabled');
+        search_bar.addEventListener('change', () => {
+            // search in data base and return the result in div
+            if(flase){
+                let content = `<div class="search_result">
+                                <img src="SOURCE" alt="">
+                                <div class="result_info">
+                                    <h6 class="title">TITLE</h6>
+                                    <p class="price">$SALARY</p>
+                                </div>
+                            </div>`
+                found_data_container.innerHTML += content
+            }
+        })
+
+    })
+    search_bar.addEventListener('blur', () => {
+        found_data_container.classList.add('disabled');
+    })
+}

@@ -242,9 +242,11 @@ header .Second-row .category {
     background-color: transparent;
     cursor: pointer;
     display: flex;
+    z-index: 4;
     gap: 10px;
     font-size: 14px;
     font-weight: 700;
+    position: relative;
     border: 1px solid #eeeeee;
 }
 
@@ -258,10 +260,11 @@ header .Second-row .category {
 
 header .Second-row .search {
     display: flex;
-    z-index: 2;
+    z-index: 4;
+    position: relative;
 }
 
-header .Second-row input {
+header .Second-row  input {
     border: 1px solid #eeeeee;
     background: none;
     padding: 15px 150px 15px 20px;
@@ -277,8 +280,7 @@ header .Second-row input {
         width: 100%;
     }
 }
-
-header .Second-row .search button {
+header .Second-row .search  button {
     background-color: #62ab00;
     width: 130px;
     color: white;
@@ -287,7 +289,50 @@ header .Second-row .search button {
     border: 1px solid white;
     border-left: none;
 }
+#found_data_container{
+    position: absolute;
+    top: 100% ;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
 
+.search_result{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0;
+    gap: 1rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
+.search_result img{
+    width: 20%;
+    padding-left: 0.5rem;
+}
+
+.search_result .title{
+font-size: large;
+}
+
+.search_result .price{
+font-size: medium;
+}
+
+.search_result div{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.search_result:hover{
+    animation: coloring_element 0.5s forwards;
+}
+@keyframes coloring_element {
+    to{
+        color: #62ab00;
+    }
+}
 header .Second-row .sign-cart {
     display: flex;
     gap: 20px;
@@ -447,7 +492,48 @@ header .Second-row .sign-cart .cart span {
     height: 10rem;
 }
 
-#categories{
+#categories_content{
+    border: 1px solid rgb(219, 221, 222);
+    margin-top: 1px;
+    position: absolute;
+    background-color: #fff;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+#categories_content span{
+    height: 2rem;
+    padding: 0.5rem ;
+    margin:0 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(219, 221, 222);
+    text-align: left;
+}
+#categories_content span:hover{
+    animation: coloring 0.5 forwards;
+}
+.sub_sub_list{
+    position: absolute;
+    background-color: #fff;
+    margin:0 1px;
+    left: calc(100% + 1rem) ;
+    top: 0;
+    align-self: normal;
+    width: 15rem;
+}
+.sub_sub_list span{
+    color: #000;
+    height: 2rem;
+    padding: 0.5rem ;
+    margin:0 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(219, 221, 222);
+    text-align: left;
 }
 /*End Header*/
 
