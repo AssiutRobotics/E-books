@@ -32,12 +32,12 @@
                     </a>
                 </li>
                 <li id="my_account">
-                    <a href="" id="account">
+                    <div style="cursor: pointer;" href="" id="account">
                         <i class="fa-solid fa-user"></i>
-                        <span> My Account</span>
+                        <span>My Account</span>
                         <i class="down fa-solid fa-chevron-down"></i>
-                    </a>
-                    <div id="account_sub_menu" class="liftUp">
+                    </div>
+                    <div id="account_sub_menu" class=" liftUp">
                         <span>Sign in</span>
                         <span>Register</span>
                         <span>Cart</span>
@@ -61,7 +61,7 @@
         <div class="container">
             <div class="frist-row">
                 <div class="logo">
-                    <img src="../images/logo.png" alt="">
+                    <img src="images/logo.png" alt="">
                     <div class="contact-num">
                         <i class="fa-solid fa-headphones-simple"></i>
                         <span>
@@ -73,54 +73,212 @@
                 </div>
 
                 <ul>
-                    <li>
-                        <a href="">
-                            <span class="active">HOME</span>
-                            <i class="active fa-solid fa-chevron-down"></i>
-                        </a>
-
+                    <li class="sub_menu_container">
+                        <div class="link" style="cursor: pointer;" href="">
+                            <span>HOME</span>
+                            <i class=" fa-solid fa-chevron-down"></i>
+                        </div>
+                        <container id="HOME" class=" sub_menu">
+                            <span>Home 1</span>
+                            <span>Home 2</span>
+                            <span>Home 3</span>
+                            <span>Home 4</span>
+                        </container>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="sub_menu_container">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>CATALOG</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
+                        </div>
+                        <container id="CATALOG" class="   sub_menu">
+                            <div>
+                                <h1>MOBILE PHONES</h1>
+                                <div>
+                                    <span>Home </span>
+                                    <span>Catalog</span>
+                                    <span>Spicials</span>
+                                    <span>Pages</span>
+                                    <span>Product Pages</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h1>SMARTWATCHES</h1>
+                                <div>
+                                    <span>Home </span>
+                                    <span>Catalog</span>
+                                    <span>Spicials</span>
+                                    <span>Pages</span>
+                                    <span>Product Pages</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h1>SMART TVS</h1>
+                                <div>
+                                    <span>Home </span>
+                                    <span>Catalog</span>
+                                    <span>Spicials</span>
+                                    <span>Pages</span>
+                                    <span>Product Pages</span>
+                                </div>
+                            </div>
+                        </container>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="sub_menu_container">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>SPECIALS</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
+                        </div>
+                        <container id="SPECIALS" class="  sub_menu">
+                            <div>
+
+                                <img src="../images/module1.webp" alt="">
+
+                                <div>
+                                    <h5>A Million Little
+                                        Pieces -James Frey</h5>
+                                    <div class="price">
+                                        <h5 class="price">$111</h5>
+                                        <p class="prev_price">$112</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+
+                                <img src="../images/product10.webp" alt="">
+
+                                <div>
+                                    <h5>A Million Little
+                                        Pieces -James Frey</h5>
+                                    <div class="price">
+                                        <h5 class="price">$111</h5>
+                                        <p class="prev_price">$112</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../images/playing-video.avif" alt="">
+
+                                <div>
+                                    <h5>A Million Little
+                                        Pieces -James Frey</h5>
+                                    <div class="price">
+                                        <h5 class="price">$111</h5>
+                                        <p class="prev_price">$112</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </container>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="sub_menu_container">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
+                        </div>
+                        <container id="PAGES" class=" sub_menu">
+                            <span>
+                                <p>
+                                    COLLECTION PAGES
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </p>
+                            </span>
+                            
+                            <span>BLOG</span>
+                            <span>CONTACT US</span>
+                            <span>FAQS</span>
+                            <span>404</span>
+                            <span>CART</span>
+                            <span>CHECKOUT</span>
+                            <span>WHISHLIST</span>
+                            <span>LOGIN</span>
+                            <span>REGISTER</span>
+                        </container>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="sub_menu_container">
+                        <div class="link" style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </a>
+                        </div>    
+                        <container id="PRODUCT_PAGES" class=" sub_menu">
+                            <span>HORIZONTAL THUMBS</span>
+                            <span>BERTICAL THUMBS</span>
+                            <span>VERTICAL THUMBS-RIGHT</span>
+                            <span>IMAGE ROLLOVER</span>
+                            <span>PRE ORDER</span>
+                            <span>VIDEO THUMB</span>
+                            <span>DEAL COUNTER</span>
+                            <span>TRUST BADGE</span>
+                            <span>CUSTOM SUMMARY</span>
+                        </container>
                     </li>
                 </ul>
             </div>
             <div class="Second-row">
-                <button class="category">
-                    <i class="fa-solid fa-bars"></i>
+                <button class="category" >
+                    <i class="fa-solid fa-bars" ></i>
                     <span>Browse categories</span>
                     <i class="fa-solid fa-chevron-down"></i>
+                    <div class="disabled" id="categories_content">
+                        <span>Arts & Photography 
+                            <div class="sub_sub_list">
+                                <span>Biographies</span>
+                                <span>Business & Money</span>
+                                <span>Calendars</span>
+                                <span>Children's Books</span>
+                                <span>Comics</span></div>
+                        </span>
+                        <span>Biographies</span>
+                        <span>Business & Money</span>
+                        <span>Calendars</span>
+                        <span>Children's Books</span>
+                        <span>Comics</span>
+                        <span>Perfomance Filters</span>
+                        <span>Cookbooks</span>
+                        <span>Accessories</span>
+                        <span>Education</span>
+                        <span>Indoor Living</span>
+                        <span>+ More Categories</span>
+                    </div>
                 </button>
+                
                 <div class="search">
-                    <input type="text" placeholder="Search here...">
-                    <button>Search</button>
+                    <input type="text" id="search_bar" placeholder="Search here...">
+                    <button id="search_btn">Search</button>
+                    <div id="found_data_container" class="disabled">
+                        <div class="search_result">
+                            <img src="../images/img-buttom.webp" alt="">
+                            <div class="result_info">
+                                <h6 class="title">asdasdasd</h6>
+                                <p class="price">asdasd</p>
+                            </div>
+                        </div>
+                        <div class="search_result">
+                            <img src="../images/img-buttom.webp" alt="">
+                            <div class="result_info">
+                                <h6 class="title">asdasdasd</h6>
+                                <p class="price">asdasd</p>
+                            </div>
+                        </div>
+                        <div class="search_result">
+                            <img src="../images/img-buttom.webp" alt="">
+                            <div class="result_info">
+                                <h6 class="title">asdasdasd</h6>
+                                <p class="price">asdasd</p>
+                            </div>
+                        </div>
+                        <div class="search_result">
+                            <img src="../images/img-buttom.webp" alt="">
+                            <div class="result_info">
+                                <h6 class="title">asdasdasd</h6>
+                                <p class="price">asdasd</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="sign-cart">
                     <div class="signRegister">
-                        <a class="sign" href="../sign/index.html">sign in</a>
-                      <a href="#"><span>or</span>Register</a>
-                  </div>
+                        <a class="sign" href="./sign/index.html">sign in</a>
+                        <a href="./register/index.html"><span>or</span>Register</a>
+                    </div>
                     <a class="cart" href="">
                         <i class="fa-brands fa-opencart"></i>
                         <div class="shop-cart">
@@ -132,7 +290,6 @@
                 </div>
             </div>
         </div>
-
     </header>
 
     <div class="register">
@@ -144,7 +301,7 @@
             </div>
             <h1>Create Account</h1>
             <p>Your Personal Details</p>
-            <form action="// link will be here" method="post">
+            <form >
                 <div class="row">
                     <label for="fristName">Frist Name</label>
                     <input type="text" name="first_name" placeholder="Frist Name" autofocus>
@@ -169,6 +326,7 @@
                 </div>
 
             </form>
+            
         </div>
     </div>
     <footer>
@@ -183,7 +341,23 @@
             </div>
         </div>
     </footer>
-    <script src="../app.js"></script>
+    <script src="../app.js" >
+        let form = document.forms[0];
+            form.addEventListener('submit', (e) => {
+            let data = new FormData(form);
+            fetch('https://e-books-production.up.railway.app/user/login', {
+                method: 'POST',
+                body: data
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            });
+            
+    </script>
 </body>
 
 </html>
