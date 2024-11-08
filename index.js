@@ -26,6 +26,12 @@ app.use("/user", userRouter);
 const bookRouter = require('./routers/bookRouter');
 app.use("/books", bookRouter);
 
+
+app.get("*",(req,res)=>{
+    res.end("server run");
+})
+
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
