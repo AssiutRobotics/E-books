@@ -364,13 +364,26 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        email: formData.get('email'),    // Get actual form data
-                        password: formData.get('password')
+                        email: formData.get('email'),   
+                        password: formData.get('password')  
                     })
                 })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    if(data.message == "User with this email already exists"){
+                        alert("User with this email already exists");
+                    }
+                    else if(data.message == "Failed to register user")
+                    {
+                        alert("Invalid email or password");
+                    }
+                    else{
+                        alert("User created successfully");
+                        localStorage.setItem('token', data.token);
+                        window.location.href = "../sign/index.html";
+                    }
+                    
                 })
                 .catch(err => {
                     console.log(err);

@@ -369,6 +369,7 @@
                     }
                     else{
                         alert("User created successfully");
+                        localStorage.setItem('token', data.token);
                         window.location.href = "../sign/index.html";
                     }
                     
