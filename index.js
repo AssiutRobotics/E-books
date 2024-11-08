@@ -22,32 +22,9 @@ mongoose.connect(process.env.MONGO_URL)
 const userRouter = require('./routers/userRouter');
 app.use("/user", userRouter);
 
-// Test endpoint (for development/debugging purposes)
-app.post("/test", async (req, res) => {
-    try {
-        const { name, num } = req.body;
-
-        // Define schema inline only for quick testing (move to models for production use)
-        const TestSchema = new mongoose.Schema({
-            name: { type: String, required: true },
-            num: { type: Number, required: true }
-        });
-        const TestModel = mongoose.model("TestUser", TestSchema);
-
-        const newTestUser = new TestModel({ name, num });
-        await newTestUser.save();
-
-        const users = await TestModel.find({ name });
-        res.status(200).json(users);
-    } catch (error) {
-        console.error("Error in /test route:", error);
-        res.status(500).json({ message: "Server error", error: error.message });
-    }
-});
-
-app.get("*",(req,res)=>{
-    res.end("server run");
-})
+// Import book router
+const bookRouter = require('./routers/bookRouter');
+app.use("/books", bookRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
