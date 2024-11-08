@@ -301,6 +301,7 @@
             </div>
             <h1>Create Account</h1>
             <p>Your Personal Details</p>
+            <!-- <form action="https://e-books-production.up.railway.app/user/register" method="post"> -->
             <form >
                 <div class="row">
                     <label for="fristName">Frist Name</label>
@@ -341,19 +342,40 @@
             </div>
         </div>
     </footer>
-    <script src="../app.js" >
+    <script src="../app.js" ></script>
+    <script>
+
         let form = document.forms[0];
             form.addEventListener('submit', (e) => {
+            e.preventDefault();
             let data = new FormData(form);
-            fetch('https://e-books-production.up.railway.app/user/login', {
+            console.log(Object.fromEntries(data));
+            
+            fetch('https://e-books-production.up.railway.app/user/register', {
                 method: 'POST',
-                body: data
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(Object.fromEntries(data))
             }).then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    if(data.message == "User with this email already exists"){
+                        alert("User with this email already exists");
+                    }
+                    else if(data.message == "Failed to register user")
+                    {
+                        alert("Invalid email or password");
+                    }
+                    else{
+                        alert("User created successfully");
+                        window.location.href = "../sign/index.html";
+                    }
+                    
                 })
                 .catch(err => {
                     console.log(err);
+
                 });
             });
             

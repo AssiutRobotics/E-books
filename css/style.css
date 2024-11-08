@@ -556,6 +556,7 @@ main > button:last-child{
 main > button{
     position: absolute;
     top: 40%;
+    opacity: 0.1;
     z-index: 3;
     width:  4rem;
     height: 4rem;
@@ -564,25 +565,47 @@ main > button{
     border: 0;
 }
 main > button:hover{
-    
+    opacity: 1;
     color: #62ab00;
 }
 #imgContainer{
     position: relative;
     width: 100vw;
-    height: 60vh;
+    height: fit-content ;
     display: flex;
     justify-content: center;
     padding-top: 1%;
 }
 #imgContainer img{
     width: 100vw;
-    height: 60vh;
+    height: 100%;
     position: absolute;
     box-shadow: 0px 0px 3px #000;
     z-index: 1;
     opacity: 0;
 }   
+@media (max-width: 768px) {
+    #details{
+        font-size: small !important;
+    }
+    
+    #shop_now{
+        height: fit-content !important;
+        width: fit-content !important;
+        font-size: medium !important;
+    }
+}
+@media (max-width: 420px) {
+    #details{
+        font-size: x-small !important;
+    }
+    #shop_now{
+        padding: 1px !important;
+        height: fit-content !important;
+        width: fit-content !important;
+        font-size: small !important;
+    }
+}
 .visible{
     animation: visible 0.5s forwards linear;
 }
@@ -630,6 +653,7 @@ main > button:hover{
     border: 1px solid #000;
     background-color: #fff;
     border-radius: 50% ;
+    margin: 1px;
 }
 #buttonContainer button:hover{
     opacity: 0.7;
@@ -646,6 +670,7 @@ main > button:hover{
     transform: scale(1.25);
     background-color: #0f0 !important;
 }
+
 /* Small */
 @media (max-width:492px) {
     main img {
@@ -656,14 +681,11 @@ main > button:hover{
 #details{
     z-index: 2;
     text-align: left; 
-    width: 60vw; 
-    position: absolute; 
-    top: 20%; 
-    left: 10%;
+    width: 100vw;  
     display: flex; 
+    margin-left: 10%;
     flex-direction: column; 
     justify-content: space-between; 
-    height: 30%;
     font-size: xx-large;
 }
 #details h1{
@@ -681,7 +703,8 @@ main > button:hover{
 #shop_now{
     margin-top: 2rem;
     width: 20%;
-    height: 40%;
+    height: 3rem;
+    overflow: hidden;
     color: #62ab00;
     border: 2px solid #62ab00;
     text-align: center;
