@@ -45,6 +45,10 @@ app.post("/test", async (req, res) => {
     }
 });
 
+app.get("*",(req,res)=>{
+    res.end("server run");
+})
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
