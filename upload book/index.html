@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Upload Book</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../register/style.css">
+
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,7 +178,7 @@
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <container id="PAGES" class=" sub_menu">
-                            <span>
+                            <span style="">
                                 <p>
                                     COLLECTION PAGES
                                     <i class="fa-solid fa-chevron-right"></i>
@@ -292,43 +294,47 @@
             </div>
         </div>
     </header>
-
-    <div class="register">
+    <div class="uploadNewBook">
         <div class="container">
             <div class="breadcrumb">
                 <a href="../">Home</a>
                 <span>></span>
-                <a href="">Create Account</a>
+                <a href="">Upload a Book</a>
             </div>
-            <h1>Create Account</h1>
-            <p>Your Personal Details</p>
-            <!-- <form action="https://e-books-production.up.railway.app/user/register" method="post"> -->
-            <form >
-                <div class="row">
-                    <label for="fristName">Frist Name</label>
-                    <input type="text" name="first_name" placeholder="Frist Name" autofocus>
-                </div>
-                <div class="row">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="last_name" placeholder="Last Name">
-                </div>
-                <div class="row">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" placeholder="Email">
-                </div>
-                <div class="row">
-                    <label for="password"> Password</label>
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <div class="row submit">
-                    <button type="submit"> <i class="fa-solid fa-user"></i>
-                        Create</button>
-                        <span> or</span>
-                        <a href="">Return to Store</a>
-                </div>
+            <div class="uploadBook">
+                <h2>Upload a Book</h2>
+                <form id="uploadForm">
+                    <label for="title">Book Title:</label>
+                    <input type="text" id="title" name="title" required>
 
-            </form>
-            
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" required>
+
+                    <label for="originalPrice">Original Price:</label>
+                    <input type="number" id="originalPrice" name="originalPrice" required>
+
+                    <label for="discounted-price">Discounted Price:</label>
+                    <input type="number" id="discountedPrice" name="discounted-price" required>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required>
+
+                    <label for="tags">Tags (comma-separated):</label>
+                    <input type="text" id="tags" name="tags">
+
+                    <label for="coverImage">Cover Image:</label>
+                    <input type="file" id="coverImage" name="coverImage" accept="image/*" required>
+
+                    <label for="additionalImages">Additional Images:</label>
+                    <input type="file" id="additionalImages" name="additionalImages" accept="image/*" multiple>
+
+                    <button type="button" onclick="uploadBook()">Upload Book</button>
+                </form>
+            </div>
+
         </div>
     </div>
     <footer>
@@ -343,45 +349,10 @@
             </div>
         </div>
     </footer>
-    <script src="../app.js" ></script>
-    <script>
 
-        let form = document.forms[0];
-            form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let data = new FormData(form);
-            console.log(Object.fromEntries(data));
-            
-            fetch('https://e-books-production.up.railway.app/user/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(Object.fromEntries(data))
-            }).then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    if(data.message == "User with this email already exists"){
-                        alert("User with this email already exists");
-                    }
-                    else if(data.message == "Failed to register user")
-                    {
-                        alert("Invalid email or password");
-                    }
-                    else{
-                        alert("User created successfully");
-                        localStorage.setItem('token', data.token);
-                        window.location.href = "../sign/index.html";
-                    }
-                    
-                })
-                .catch(err => {
-                    console.log(err);
+    <script src="script.js"></script>
+    <script src="../app.js"></script>
 
-                });
-            });
-            
-    </script>
 </body>
 
 </html>
