@@ -1,12 +1,14 @@
-const express = require("express");
-const userController = require('../controllers/userController');
+const express = require('express');
+const UserController = require('../controllers/userController');
+const { registerValidation, loginValidation } = require('../middlewares/userValidation');
+const { hashPassword } = require('../middlewares/passwordMiddleware');
 
 const Router = express.Router();
 
 // Route for user registration
-Router.route('/register').post(userController.register);
+Router.post('/register', registerValidation, hashPassword, UserController.register);
 
 // Route for user login
-Router.route('/login').post(userController.log_in);
+Router.post('/login', loginValidation, UserController.log_in);
 
 module.exports = Router;

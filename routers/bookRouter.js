@@ -1,22 +1,27 @@
-const express = require('express');
-const BookController = require('../controllers/BookController');
-const { validateObjectId } = require('../middlewares/validateObjectId');
+const express = require("express");
+const BookController = require("../controllers/bookController");
+const { addBookValidation, getBookByIdValidation } = require("../middlewares/bookValidationMiddleware");
+const { calculateDiscountPercentage } = require("../middlewares/bookBusinessLogicMiddleware");
+const { handleBookError } = require("../middlewares/bookErrorMiddleware");
 
 const Router = express.Router();
 
 // Route for adding a new book
-Router.post('/add', BookController.addBook); // Simplified RESTful route
+Router.post("/add", addBookValidation, calculateDiscountPercentage, BookController.addBook);
 
 // Route for getting all books
-Router.get('/all', BookController.getAllBooks); // Simplified RESTful route
+Router.get("/all", BookController.getAllBooks);
 
 // Route for getting a book by ID
-Router.get('/get/:id', validateObjectId, BookController.getBookById);
+Router.get("/get/:id", getBookByIdValidation, BookController.getBookById);
 
 // Route for updating a book by ID
-Router.put('/update/:id', validateObjectId, BookController.updateBook);
+Router.put("/update/:id", addBookValidation, calculateDiscountPercentage, BookController.updateBook);
 
 // Route for deleting a book by ID
-Router.delete('/delete/:id', validateObjectId, BookController.deleteBook);
+Router.delete("/delete/:id", BookController.deleteBook);
+
+// Global error handling
+Router.use(handleBookError);
 
 module.exports = Router;

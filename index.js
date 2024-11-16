@@ -13,6 +13,8 @@ const app = express();
 // Add the response middleware
 app.use(responseMiddleware);
 
+
+
 setupCommonMiddleware();
 
 // Use the database connection middleware

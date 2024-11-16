@@ -39,7 +39,7 @@ const bookSchema = new mongoose.Schema(
                 // Ensure each tag is a string and not excessively long
                 validator: function (values) {
                     if (!Array.isArray(values)) return false;
-                    return values.every((tag) => typeof tag === "string" && tag.length <= 50);
+                    return values.every(tag => typeof tag === "string" && tag.length <= 50);
                 },
                 message: "Each tag must be a string and cannot exceed 50 characters",
             },
@@ -93,35 +93,37 @@ const bookSchema = new mongoose.Schema(
             validate: {
                 validator: function (values) {
                     if (!Array.isArray(values)) return false;
-                    return values.every((value) => /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(value));
+                    return values.every(value =>
+                        /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(value)
+                    );
                 },
                 message: "All additional images must be valid image URLs",
             },
         },
-        // // Stock availability
-        // stock: {
-        //     type: Number,
-        //     required: [true, "Stock is required"],
-        //     min: [0, "Stock cannot be negative"], // Ensure stock is non-negative
-        // },
-        // // Book's publication date
-        // publicationDate: {
-        //     type: Date,
-        //     required: [true, "Publication date is required"],
-        // },
-        // // Average rating for the book
-        // averageRating: {
-        //     type: Number,
-        //     min: [0, "Rating cannot be less than 0"],
-        //     max: [5, "Rating cannot exceed 5"], // Limit ratings between 0 and 5
-        //     default: 0, // Default to 0 if no ratings are provided
-        // },
-        // // Number of ratings
-        // ratingsCount: {
-        //     type: Number,
-        //     min: [0, "Ratings count cannot be negative"],
-        //     default: 0,
-        // },
+        // Stock availability
+        stock: {
+            type: Number,
+            required: [true, "Stock is required"],
+            min: [0, "Stock cannot be negative"], // Ensure stock is non-negative
+        },
+        // Book's publication date
+        publicationDate: {
+            type: Date,
+            required: [true, "Publication date is required"],
+        },
+        // Average rating for the book
+        averageRating: {
+            type: Number,
+            min: [0, "Rating cannot be less than 0"],
+            max: [5, "Rating cannot exceed 5"], // Limit ratings between 0 and 5
+            default: 0, // Default to 0 if no ratings are provided
+        },
+        // Number of ratings
+        ratingsCount: {
+            type: Number,
+            min: [0, "Ratings count cannot be negative"],
+            default: 0,
+        },
     },
     {
         timestamps: true, // Enables automatic management of createdAt and updatedAt fields
