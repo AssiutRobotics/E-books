@@ -3,20 +3,20 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const connectDatabase = require('./middlewares/databaseMiddleware');
+const setupCommonMiddleware = require('./middlewares/commonMiddleware');
 
 dotenv.config();
 
 const app = express();
 
-// Middleware setup
-app.use(cors()); // Allow all CORS requests
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// Add the response middleware
+app.use(responseMiddleware);
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URL)
-    .then(() => console.log("MongoDB connected successfully"))
-    .catch(error => console.error("MongoDB connection error:", error));
+setupCommonMiddleware();
+
+// Use the database connection middleware
+connectDatabase();
 
 // Import user router
 const userRouter = require('./routers/userRouter');

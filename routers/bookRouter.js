@@ -1,21 +1,22 @@
 const express = require('express');
-const bookController = require('../controllers/bookController');
+const BookController = require('../controllers/BookController');
+const { validateObjectId } = require('../middlewares/validateObjectId');
 
 const Router = express.Router();
 
 // Route for adding a new book
-Router.route('/add').post(bookController.addBook);
+Router.post('/add', BookController.addBook); // Simplified RESTful route
 
 // Route for getting all books
-Router.route('/all').get(bookController.getAllBooks);
+Router.get('/all', BookController.getAllBooks); // Simplified RESTful route
 
 // Route for getting a book by ID
-Router.route('/get/:id').get(bookController.getBookById);
+Router.get('/get/:id', validateObjectId, BookController.getBookById);
 
 // Route for updating a book by ID
-Router.route('/update/:id').put(bookController.updateBook);
+Router.put('/update/:id', validateObjectId, BookController.updateBook);
 
 // Route for deleting a book by ID
-Router.route('/delete/:id').delete(bookController.deleteBook);
+Router.delete('/delete/:id', validateObjectId, BookController.deleteBook);
 
 module.exports = Router;
