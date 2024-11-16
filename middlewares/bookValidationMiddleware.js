@@ -22,7 +22,7 @@ exports.addBookValidation = [
 
 // Validation for getting a book by ID
 exports.getBookByIdValidation = [
-    param('id').isMongoId().withMessage('Invalid book ID'),
+    body('id').isMongoId().withMessage('Invalid book ID'),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDatabase = require('./middlewares/databaseMiddleware');
 const setupCommonMiddleware = require('./middlewares/commonMiddleware');
+const responseMiddleware = require('./middlewares/responseMiddleware');
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ app.use(responseMiddleware);
 
 
 
-setupCommonMiddleware();
+setupCommonMiddleware(app);
 
 // Use the database connection middleware
 connectDatabase();
