@@ -366,16 +366,8 @@
                         localStorage.setItem('token', data.token);
                         window.location.href = "../sign/index.html";
                     }
-
-                    else if(data.message == "User with this email already exists"){
-                        alert("User with this email already exists");
-                    }
-                    else if(data.message == "Failed to register user")
-                    {
-                           alert("Failed to register user");   
-                    }
                     else{
-                        alert("An error occured");
+                        alert(data.message)
                     }
                     
                 })
