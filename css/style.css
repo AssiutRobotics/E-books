@@ -929,6 +929,7 @@ main > button:hover{
     flex-wrap: wrap;
     align-items: center;
     gap: 20px;
+    padding-bottom: 0.5rem;
 }
 
 .products-content .product {
