@@ -372,10 +372,7 @@
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    if(data.message == "User with this email already exists"){
-                        alert("User with this email already exists");
-                    }
-                    else if(data.message == "Failed to register user")
+                    if(data.message == "Incorrect email or password")
                     {
                         alert("Invalid email or password");
                     }
