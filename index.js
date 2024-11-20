@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const connectDatabase = require('./middlewares/databaseMiddleware');
 const setupCommonMiddleware = require('./middlewares/commonMiddleware');
 const responseMiddleware = require('./middlewares/responseMiddleware');
+const cartRouter = require("./routers/cartRouter");
 
 dotenv.config();
 
@@ -32,8 +33,8 @@ app.use("/books", bookRouter);
 
 app.get("*",(req,res)=>{
     res.end("server run");
-})
-
+});
+app.use("/cart", cartRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
