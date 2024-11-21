@@ -1,6 +1,7 @@
 const express = require('express');
 const Cart = require('../models/cart');
 const Book = require('../models/book');
+const Order = require('../models/order');
 
 const router = express.Router();
 
@@ -53,6 +54,7 @@ router.get('/:user', async (req, res) => {
   }
 });
 
+
 router.delete('/remove', async (req, res) => {
   try {
     const { user, bookId } = req.body;
@@ -70,6 +72,8 @@ router.delete('/remove', async (req, res) => {
     res.status(500).json({ error: 'Something went wrong', details: error.message });
   }
 });
+
+
 router.post('/buy', async (req, res) => {
   try {
     const { user } = req.body;
@@ -80,19 +84,27 @@ router.post('/buy', async (req, res) => {
     }
 
     let totalAmount = 0;
-    const orderItems = cart.items.map(item => {
+    const orderItems = [];
+
+    for (const item of cart.items) {
+      if (item.quantity > item.book.stock) {
+        return res.status(400).json({ error: `Not enough stock for book: ${item.book.title}` });
+      }
+
       totalAmount += item.book.price * item.quantity;
-      return {
+      orderItems.push({
         book: item.book._id,
         quantity: item.quantity,
         price: item.book.price
-      };
-    });
+      });
+
+      item.book.stock -= item.quantity;
+      await item.book.save();
+    }
 
     cart.items = [];
     await cart.save();
 
-    const Order = require('../models/order');
     const newOrder = new Order({
       user,
       items: orderItems,
@@ -107,4 +119,3 @@ router.post('/buy', async (req, res) => {
 });
 
 module.exports = router;
-
