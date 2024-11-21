@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 const connectDatabase = require('./middlewares/databaseMiddleware');
 const setupCommonMiddleware = require('./middlewares/commonMiddleware');
 const responseMiddleware = require('./middlewares/responseMiddleware');
-const cartRouter = require("./routers/cartRouter");
+const cartRouter = require('./routes/cartRouter');
+const orderRouter = require('./routes/orderRouter'); 
 
 dotenv.config();
 
@@ -35,9 +36,22 @@ app.get("*",(req,res)=>{
     res.end("server run");
 });
 app.use("/cart", cartRouter);
+app.use('/orders', orderRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
