@@ -352,6 +352,31 @@
 
     <script src="script.js"></script>
     <script src="../app.js"></script>
+    <script>
+
+        function uploadBook() {
+            let form = document.getElementsByTagName('form')[0];
+            let data = new FormData(form);
+
+            payload = {
+                method: 'POST',
+                Headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: data
+            }
+
+            fetch('https://e-books-production.up.railway.app/books/add', payload)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        }
+    </script>
 
 </body>
 
