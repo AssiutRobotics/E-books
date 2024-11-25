@@ -1,7 +1,7 @@
 const express = require('express');
-const Cart = require('../models/cart');
-const Book = require('../models/book');
-const Order = require('../models/order');
+const Cart = require('../models/cartModel');
+const Book = require('../models/bookModel');
+const Order = require('../models/orderModel');
 
 const router = express.Router();
 

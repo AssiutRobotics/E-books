@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 const connectDatabase = require('./middlewares/databaseMiddleware');
 const setupCommonMiddleware = require('./middlewares/commonMiddleware');
 const responseMiddleware = require('./middlewares/responseMiddleware');
-const cartRouter = require('./routes/cartRouter');
-const orderRouter = require('./routes/orderRouter'); 
+const cartRouter = require('./routers/cartRouter');
+const orderRouter = require('./routers/orderRouter'); 
 
 dotenv.config();
 
