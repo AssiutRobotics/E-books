@@ -184,7 +184,7 @@
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </p>
                             </span>
-                            
+
                             <span>BLOG</span>
                             <span>CONTACT US</span>
                             <span>FAQS</span>
@@ -200,7 +200,7 @@
                         <div class="link" style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </div>    
+                        </div>
                         <container id="PRODUCT_PAGES" class=" sub_menu">
                             <span>HORIZONTAL THUMBS</span>
                             <span>BERTICAL THUMBS</span>
@@ -216,18 +216,19 @@
                 </ul>
             </div>
             <div class="Second-row">
-                <button class="category" >
-                    <i class="fa-solid fa-bars" ></i>
+                <button class="category">
+                    <i class="fa-solid fa-bars"></i>
                     <span>Browse categories</span>
                     <i class="fa-solid fa-chevron-down"></i>
                     <div class="disabled" id="categories_content">
-                        <span>Arts & Photography 
+                        <span>Arts & Photography
                             <div class="sub_sub_list">
                                 <span>Biographies</span>
                                 <span>Business & Money</span>
                                 <span>Calendars</span>
                                 <span>Children's Books</span>
-                                <span>Comics</span></div>
+                                <span>Comics</span>
+                            </div>
                         </span>
                         <span>Biographies</span>
                         <span>Business & Money</span>
@@ -242,7 +243,7 @@
                         <span>+ More Categories</span>
                     </div>
                 </button>
-                
+
                 <div class="search">
                     <input type="text" id="search_bar" placeholder="Search here...">
                     <button id="search_btn">Search</button>
@@ -323,10 +324,14 @@
                     <input type="text" id="brand" name="brand" required>
 
                     <label for="tags">Tags (comma-separated):</label>
-                    <input type="text" id="tags" name="tags">
+                    <input type="text" id="tags" name="tags" required>
 
-                    <label for="coverImage">Cover Image:</label>
-                    <input type="file" id="coverImage" name="coverImage" accept="image/*" required>
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock" required>
+
+                    <label for="coverImageUrl">Cover Image Url:</label>
+                    <input type="url" id="coverImageUrl" name="coverImageUrl"
+                        placeholder="Example:https://example.com/pride-and-prejudice.jpg " required>
 
                     <label for="additionalImages">Additional Images:</label>
                     <input type="file" id="additionalImages" name="additionalImages" accept="image/*" multiple>
@@ -353,28 +358,64 @@
     <script src="script.js"></script>
     <script src="../app.js"></script>
     <script>
+        let title = document.getElementById("title");
+        let author = document.getElementById("author");
+        let description = document.getElementById("description");
+        let originalPrice = document.getElementById("originalPrice");
+        let discountedPrice = document.getElementById("discountedPrice");
+        let coverImageUrl = document.getElementById("coverImageUrl");
+        let stock = document.getElementById("stock");
+        let brand = document.getElementById("brand");
+        let additionalImages = document.getElementById("additionalImages")
 
-        function uploadBook() {
-            let form = document.getElementsByTagName('form')[0];
-            let data = new FormData(form);
+        async function uploadBook() {
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = String(today.getMonth() + 1).padStart(2, '0');
+            let day = String(today.getDate()).padStart(2, '0');
+            let formattedDate = `${year}-${month}-${day}`;
 
-            payload = {
-                method: 'POST',
-                Headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: data
+            if (title.value && author.value && description.value && originalPrice.value && discountedPrice.value && coverImageUrl.value && stock.value && brand.value) {
+                if (/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(coverImageUrl.value)) {
+                    let dataForm = {
+                        title: title.value,
+                        author: author.value,
+                        description: description.value,
+                        originalPrice: parseFloat(originalPrice.value),
+                        discountedPrice: parseFloat(discountedPrice.value),
+                        coverImageUrl: coverImageUrl.value,
+                        stock: parseInt(stock.value, 10),
+                        publicationDate: formattedDate,
+                        brand: brand.value
+                    };
+                    let fetchAPI = await fetch("https://e-books-production.up.railway.app/books/add",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(dataForm)
+                        }
+                    )
+                    let response = await fetchAPI.json()
+                    alert("The book has been successfully added!");                    // console.log(response)
+                    title = ""
+                    author = ""
+                    description = ""
+                    originalPrice = ""
+                    discountedPrice = ""
+                    coverImageUrl = ""
+                    stock = ""
+                    brand = ""
+                    additionalImages = ""
+
+                } else {
+                    alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
+
+                }
+            } else {
+                alert("Please fill all the fields");
             }
-
-            fetch('https://e-books-production.up.railway.app/books/add', payload)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-
         }
     </script>
 
