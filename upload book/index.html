@@ -388,27 +388,36 @@
                         publicationDate: formattedDate,
                         brand: brand.value
                     };
-                    let fetchAPI = await fetch("https://e-books-production.up.railway.app/books/add",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(dataForm)
-                        }
-                    )
-                    let response = await fetchAPI.json()
-                    alert("The book has been successfully added!");                    // console.log(response)
-                    title = ""
-                    author = ""
-                    description = ""
-                    originalPrice = ""
-                    discountedPrice = ""
-                    coverImageUrl = ""
-                    stock = ""
-                    brand = ""
-                    additionalImages = ""
+                    try {
+                        let fetchAPI = await fetch("https://e-books-production.up.railway.app/books/add",
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(dataForm)
+                            }
+                        )
+                        let response = await fetchAPI.json()
+                        if (fetchAPI.ok) {
+                            alert("The book has been successfully added!");                    // console.log(response)
+                            title.value = ""
+                            author.value = ""
+                            description.value = ""
+                            originalPrice.value = ""
+                            discountedPrice.value = ""
+                            coverImageUrl.value = ""
+                            stock.value = ""
+                            brand.value = ""
+                            additionalImages.value = ""
+                        } else {
+                            alert(`Error adding book : ${fetchAPI.status}`)
 
+                        }
+                    } catch (error) {
+                        alert("Network error: Could not complete the request.");
+                        console.error("Error:", error);
+                    }
                 } else {
                     alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
 
