@@ -32,18 +32,18 @@ const userSchema = new mongoose.Schema({
             },
             message: 'Password must contain an uppercase letter, a number, and a special character',
         },
-        select: false, // Prevents the password from being returned in queries
+        select: true, // Prevents the password from being returned in queries
     },
 }, {
     timestamps: true,
 });
 
 // Hash password before saving
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
-    this.password = await bcrypt.hash(this.password, 12);
-    next();
-});
+// userSchema.pre('save', async function (next) {
+//     if (!this.isModified('password')) return next();
+//     this.password = await bcrypt.hash(this.password, 12);
+//     next();
+// });
 
 // Check password validity
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
