@@ -92,10 +92,10 @@ nav ul li a, nav ul li a i {
     transition: .5s;
 }
 
-nav ul li div:hover,
-nav ul li div:hover i {
+/* nav ul li  div:hover,
+nav ul li  div:hover i {
     color: #62ab00;
-}
+} */
 
 @media (max-width: 768px) {
     nav ul li a span {
@@ -126,7 +126,7 @@ nav ul li div:hover i {
     border-bottom: 1px solid rgb(219, 221, 222);
 }
 
-#account_sub_menu span:hover {
+#account_sub_menu span :hover {
     animation: coloring 0.5 forwards;
 }
 
@@ -502,6 +502,7 @@ header .Second-row .sign-cart .cart span {
     top: 100%;
     width: 100%;
     left: 0;
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -522,7 +523,7 @@ header .Second-row .sign-cart .cart span {
     position: absolute;
     background-color: #fff;
     margin:0 1px;
-    left: calc(100% + 1rem) ;
+    left: calc(100%) ;
     top: 0;
     align-self: normal;
     width: 15rem;
@@ -1557,7 +1558,7 @@ footer .footer-inner .copyright span {
 
 .dropDown {
     display: flex !important;
-
+    overflow: visible !important;
     animation: dropDown 0.2s forwards;
 }
 

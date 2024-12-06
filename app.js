@@ -87,6 +87,24 @@ arr_of_taps.forEach((tap,index) => {
     })
 
 }
+
+// make more/less categories
+// {
+//     let more_categories = document.getElementById('height_controller');
+//     let counter = 0
+//     let mid_element = document.getElementById('mid_element');
+//     more_categories.addEventListener('click', () => {
+//         if(counter == 1){
+//             counter = 0;
+//         }
+//         else
+//         {
+//             document.getElementById('categories_content').style.height = "16.8rem";
+//             counter = 1;
+//         }
+//     })
+// }
+
 // make the slider image
 {
     let index = 0;
