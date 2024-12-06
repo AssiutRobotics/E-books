@@ -16,6 +16,7 @@ const app = express();
 // Add the response middleware
 app.use(responseMiddleware);
 
+console.log("runnnn");
 
 
 setupCommonMiddleware(app);
@@ -32,13 +33,15 @@ const bookRouter = require('./routers/bookRouter');
 app.use("/books", bookRouter);
 
 
+app.use("/cart", cartRouter);
+
+app.use('/orders', orderRouter);
+
+
 app.get("*",(req,res)=>{
     res.end("server run");
 });
 
-app.use("/cart", cartRouter);
-
-app.use('/orders', orderRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;

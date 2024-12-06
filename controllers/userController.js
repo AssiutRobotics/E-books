@@ -6,10 +6,13 @@ class UserController {
     static async register(req, res) {
         try {
             const { first_name, last_name, email, password } = req.body;
-
+            console.log(" register ");
+            
             // Check if user already exists
             const existingUser = await User.findOne({ email });
             if (existingUser) {
+                console.log(existingUser);
+                
                 return res.status(400).json({ message: 'User with this email already exists' });
             }
 
