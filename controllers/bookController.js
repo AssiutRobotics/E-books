@@ -40,6 +40,7 @@ class BookController {
     static async getBookById(req, res) {
         try {
             const {id} = req.params;
+            console.log("Book ID:", id);
             const book = await Book.findById(id);
             if (!book) {
                 return res.status(404).json({message: "Book not found"});
