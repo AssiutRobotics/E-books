@@ -6,10 +6,13 @@ class UserController {
     static async register(req, res) {
         try {
             const { first_name, last_name, email, password } = req.body;
-
+            console.log(" register ", password);
+            
             // Check if user already exists
             const existingUser = await User.findOne({ email });
             if (existingUser) {
+                console.log(existingUser);
+                
                 return res.status(400).json({ message: 'User with this email already exists' });
             }
 
@@ -26,15 +29,25 @@ class UserController {
             const { email, password } = req.body;
 
             // Check if user exists and compare password
-            const user = await User.findOne({ email }).select('+password');
-            if (!user || !(await comparePassword(password, user.password))) {
-                return res.status(401).json({ message: 'Incorrect email or password' });
-            }
+            const user = await User.findOne({ email });
+            console.log(user.password);
+             
+            if (!user ) {
+                return res.status(404).json({ message: 'user not found' });
+            } 
+            const checker= await comparePassword(password, user.password);
+            console.log(checker);
+            
+            if(!checker){
+                return res.status(401).json({ message: 'Wrong password' });
 
+            }
             // Generate token
             const token = generateToken(user._id);
             res.status(200).json({ message: 'Login successful', token });
         } catch (error) {
+            console.log("error",error);
+            
             res.status(500).json({ message: 'Failed to log in user', error: error.message });
         }
     }

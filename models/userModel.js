@@ -28,22 +28,22 @@ const userSchema = new mongoose.Schema({
         minlength: [8, 'Password must be at least 8 characters long'],
         validate: {
             validator: function (value) {
-                return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value);
+                return  /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(value);
             },
             message: 'Password must contain an uppercase letter, a number, and a special character',
         },
-        select: false, // Prevents the password from being returned in queries
+        select: true, // Prevents the password from being returned in queries
     },
 }, {
     timestamps: true,
 });
 
 // Hash password before saving
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
-    this.password = await bcrypt.hash(this.password, 12);
-    next();
-});
+// userSchema.pre('save', async function (next) {
+//     if (!this.isModified('password')) return next();
+//     this.password = await bcrypt.hash(this.password, 12);
+//     next();
+// });
 
 // Check password validity
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {

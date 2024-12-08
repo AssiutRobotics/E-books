@@ -6,9 +6,13 @@ exports.registerValidation = [
     body('email').isEmail().withMessage('Please provide a valid email'),
     body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters long'),
     (req, res, next) => {
+        console.log("register validation");
+        
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            console.log("error in validation register:",errors);
+            
+            return res.status(400).json({message:" error in validation",error:errors.array() });
         }
         next();
     }
