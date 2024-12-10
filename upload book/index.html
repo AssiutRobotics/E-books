@@ -367,7 +367,6 @@
         let stock = document.getElementById("stock");
         let brand = document.getElementById("brand");
         let additionalImages = document.getElementById("additionalImages")
-
         async function uploadBook() {
             let today = new Date();
             let year = today.getFullYear();
@@ -384,10 +383,13 @@
                         originalPrice: parseFloat(originalPrice.value),
                         discountedPrice: parseFloat(discountedPrice.value),
                         coverImageUrl: coverImageUrl.value,
+                        // moreImages: Array.from(additionalImages.files),
                         stock: parseInt(stock.value, 10),
                         publicationDate: formattedDate,
                         brand: brand.value
                     };
+                    console.table('data form ',dataForm);
+                    
                     try {
                         let fetchAPI = await fetch("https://e-books-production.up.railway.app/books/add",
                             {

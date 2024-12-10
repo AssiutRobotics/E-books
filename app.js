@@ -263,7 +263,7 @@ arr_of_taps.forEach((tap,index) => {
            let content = `
            <div class="product">
                         <a href="">Amazon</a>
-                        <a class="product-name" href="">${book.title}</a>
+                        <button class="product-name link" id=${book._id}>${book.title}</button>
                         <img src="${book.coverImageUrl}" alt="">
                         <div class="price">
                             <span class="current-price">$${book.discountedPrice}</span>
@@ -282,9 +282,24 @@ arr_of_taps.forEach((tap,index) => {
            container.innerHTML += content
         })
     })
+    .then(() => {
+        {
+            let buttons = Array.from(document.getElementsByClassName('link'));
+            console.log(buttons);
+            
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    localStorage.setItem('book',e.target.id)
+                    window.location.href = './product/index.html'
+                })
+            })
+        }
+    })
     .catch((err) => {
         console.log(err);
     })  
      
     
 }
+
+// make action when the user click on the product

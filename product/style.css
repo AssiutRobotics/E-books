@@ -1,9 +1,9 @@
-.product {
+.Mproduct {
     padding-top: 30px;
 
 }
 
-.product .breadcrumb {
+.Mproduct .breadcrumb {
     margin-bottom: 25px;
 }
 
@@ -30,14 +30,20 @@
 .product-imgs .more-img {
     width: 100%;
     padding-top: 30px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
 }
 
 .product-imgs .more-img img {
-    width: calc(100% / 4);
+    width: 100%;
     cursor: pointer;
+    padding: 5px 0;
 }
-
+.product-imgs .more-img .active{
+    border: 2px solid #62ab00;
+}
 
 /*Start Product Info*/
 .product-info {
