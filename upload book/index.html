@@ -375,7 +375,7 @@
             let formattedDate = `${year}-${month}-${day}`;
 
             if (title.value && author.value && description.value && originalPrice.value && discountedPrice.value && coverImageUrl.value && stock.value && brand.value) {
-                if (/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(coverImageUrl.value)) {
+                // if (/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(coverImageUrl.value)) {
                     let dataForm = {
                         title: title.value,
                         author: author.value,
@@ -391,7 +391,7 @@
                     console.table('data form ',dataForm);
                     
                     try {
-                        let fetchAPI = await fetch("https://e-books-production.up.railway.app/books/add",
+                        let fetchAPI = await fetch("https://e-books-mu.vercel.app/books/add",
                             {
                                 method: "POST",
                                 headers: {
@@ -421,10 +421,10 @@
                         alert("Network error: Could not complete the request.");
                         console.error("Error:", error);
                     }
-                } else {
-                    alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
+                // } else {
+                //     alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
 
-                }
+                // }
             } else {
                 alert("Please fill all the fields");
             }
