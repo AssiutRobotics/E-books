@@ -15,7 +15,7 @@
     let mainImage = document.querySelector('#mainImage');
     let subImages = Array.from(document.querySelectorAll('.more-img img'));
 
-    let url = 'https://e-books-production.up.railway.app/books/get/';
+    let url = 'https://e-books-mu.vercel.app/books/get/';
     let id = localStorage.getItem('book');
     
     //fetch here

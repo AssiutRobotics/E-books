@@ -252,7 +252,7 @@ arr_of_taps.forEach((tap,index) => {
 {
     let container = document.getElementById('products-content');
     //fetch for books
-    fetch('https://e-books-production.up.railway.app/books/all')
+    fetch('https://e-books-mu.vercel.app/books/all')
     .then((res) => res.json())
     .then((data) => {
         let books = data.data.books

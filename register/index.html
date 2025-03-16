@@ -302,7 +302,7 @@
             </div>
             <h1>Create Account</h1>
             <p>Your Personal Details</p>
-            <!-- <form action="https://e-books-production.up.railway.app/user/register" method="post"> -->
+            <!-- <form action="https://e-books-mu.vercel.app/user/register" method="post"> -->
             <form >
                 <div class="row">
                     <label for="fristName">Frist Name</label>
@@ -352,7 +352,7 @@
             let data = new FormData(form);
             console.log(Object.fromEntries(data));
             
-            fetch('https://e-books-production.up.railway.app/user/register', {
+            fetch('https://e-books-mu.vercel.app/user/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
