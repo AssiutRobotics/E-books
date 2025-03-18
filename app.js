@@ -55,8 +55,8 @@ arr_of_taps.forEach((tap,index) => {
     console.log(list_of_my_account,account_sub_menu);
     
     list_of_my_account.addEventListener('click', () => {
-        account_sub_menu.classList.remove('liftUp');
-        account_sub_menu.classList.add('dropDown');
+        account_sub_menu.classList.toggle('dropDown');
+        account_sub_menu.classList.toggle('liftUp');
     })
     list_of_my_account.addEventListener('mouseleave', () => {
             account_sub_menu.classList.remove('dropDown');
@@ -74,9 +74,9 @@ arr_of_taps.forEach((tap,index) => {
         console.log(container,index);
         
         container.addEventListener('click', () => {
-            list_of_lists[index].classList.remove('liftUp');
-            list_of_lists[index].classList.add('dropDown');
-            
+            list_of_lists[index].classList.toggle('dropDown');
+            list_of_lists[index].classList.toggle('liftUp');
+
         })
     })
     list_of_lists_container.forEach((container,index) => {
