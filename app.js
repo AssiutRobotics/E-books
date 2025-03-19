@@ -55,8 +55,8 @@ arr_of_taps.forEach((tap,index) => {
     console.log(list_of_my_account,account_sub_menu);
     
     list_of_my_account.addEventListener('click', () => {
-        account_sub_menu.classList.remove('liftUp');
-        account_sub_menu.classList.add('dropDown');
+        account_sub_menu.classList.toggle('dropDown');
+        account_sub_menu.classList.toggle('liftUp');
     })
     list_of_my_account.addEventListener('mouseleave', () => {
             account_sub_menu.classList.remove('dropDown');
@@ -74,9 +74,9 @@ arr_of_taps.forEach((tap,index) => {
         console.log(container,index);
         
         container.addEventListener('click', () => {
-            list_of_lists[index].classList.remove('liftUp');
-            list_of_lists[index].classList.add('dropDown');
-            
+            list_of_lists[index].classList.toggle('dropDown');
+            list_of_lists[index].classList.toggle('liftUp');
+
         })
     })
     list_of_lists_container.forEach((container,index) => {
@@ -108,120 +108,89 @@ arr_of_taps.forEach((tap,index) => {
 // make the slider image
 {
     let index = 0;
-    let images = document.querySelectorAll('.slider_img')   
-    let buttonContainer = document.getElementById('numbers')
-    let buttons = []
-    for(let i = 0; i <images.length;i++){
-        let Button = document.createElement('button')
-        Button.classList.add('button_of_slider')
-        buttonContainer.appendChild(Button)
-        buttons.push(Button)
-    }
-    buttons[0].classList.add('Active')
-    images[0].classList.add('visible')
-    let next = document.getElementById('next')
-    let prev = document.getElementById('prev')
-    //////////////////////////////////////////////////////
-    console.log(images);
-    
-    // next function
-    if(index == images.length - 1)
-    next.disabled = true 
-    
-    function Next(){
-        prev.disabled = false   
-        if(index < images.length - 1){
-            console.log(index)
-            if(index == -1){
-                images[images.length - 1].classList.remove('visible')
-                buttons[images.length - 1].classList.remove('Active')
-                index = 0;
-                images[index].classList.add('visible')
-                buttons[index].classList.add('Active')
-            }
-            else{
-                next.disabled = false
-                console.log(index)
-                images[index].classList.remove('visible')
-                buttons[index].classList.remove('Active')
-                index++
-                images[index].classList.add('visible')
-                buttons[index].classList.add('Active')
-                if(index == images.length - 1)
-                    // next.disabled = true 
-                index = -1;
-            }
-        }
-    }
-    // prev functions
-    function Prev(){
-        next.disabled = false
-        console.log(index);
-    
-        if(index >= 0){
-            
-            if(index == 0){
-                images[index].classList.remove('visible')
-                buttons[index].classList.remove('Active')
-                index = 3;
-                images[index].classList.add('visible')
-                buttons[index].classList.add('Active')
-            }
-            else{
-                prev.disabled = false   
-                images[index].classList.remove('visible')
-                buttons[index].classList.remove('Active')
-                index--
-                images[index].classList.add('visible')
-                buttons[index].classList.add('Active')
-                if(index == 0){
-                    // prev.disabled = true
-                    // index = 4;   
-                }
-            }
-        }
-        console.log(index);
+    let images = document.querySelectorAll('.slider_img');
+    let buttonContainer = document.getElementById('numbers');
+    let buttons = [];
 
+    for (let i = 0; i < images.length; i++) {
+        let Button = document.createElement('button');
+        Button.classList.add('button_of_slider');
+        buttonContainer.appendChild(Button);
+        buttons.push(Button);
     }
-    // button function 
-    function moving(target){
-        if(target == images.length - 1)
-        {
-            next.disabled = true
-            prev.disabled = false 
-        }   
-        else if(target == 0){
-            prev.disabled = true
-            next.disabled = false
-        }
-        else{
-            next.disabled = false
-            prev.disabled = false
-        }
-        console.log(index)
-        console.log(target)
-        images[index].classList.remove('visible')
-        buttons[index].classList.remove('Active')
-        index = target
-        images[index].classList.add('visible')
-        buttons[index].classList.add('Active')
+
+    buttons[0].classList.add('Active');
+    images[0].classList.add('visible');
+
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+
+    function updateButtons() {
+        buttons.forEach((btn, i) => {
+            if (i === index) {
+                btn.classList.add('Active');
+            } else {
+                btn.classList.remove('Active');
+            }
+        });
     }
-    console.log(buttons)
-    ///////////////////////////////////////////////////////
-    
-    document.getElementById('next').addEventListener('click',() => Next())
-    document.getElementById('prev').addEventListener('click',() => Prev())
-    for(let i = 0; i < buttons.length;i++){
-        buttons[i].addEventListener('click', () => {moving(i)})
+
+    function updateImages() {
+        images.forEach((img, i) => {
+            if (i === index) {
+                img.classList.add('visible');
+            } else {
+                img.classList.remove('visible');
+            }
+        });
     }
-    function auto(x = 5000){
+
+    function Next() {
+        images[index].classList.remove('visible');
+        buttons[index].classList.remove('Active');
+
+        index = (index + 1) % images.length; 
+
+        updateImages();
+        updateButtons();
+    }
+
+    function Prev() {
+        images[index].classList.remove('visible');
+        buttons[index].classList.remove('Active');
+
+        index = (index - 1 + images.length) % images.length; 
+        updateImages();
+        updateButtons();
+    }
+
+    function moving(target) {
+        images[index].classList.remove('visible');
+        buttons[index].classList.remove('Active');
+
+        index = target; 
+
+        updateImages();
+        updateButtons();
+    }
+
+    document.getElementById('next').addEventListener('click', () => Next());
+    document.getElementById('prev').addEventListener('click', () => Prev());
+
+    buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => moving(i));
+    });
+
+    function auto(x = 5000) {
         let interval = setInterval(() => {
-            Next()
+            Next();
         }, x);
         return interval;
     }
-    auto()
+
+    auto(); 
 }
+
 // make the search bar
 {
     let search_bar = document.getElementById('search_bar');
@@ -261,9 +230,9 @@ arr_of_taps.forEach((tap,index) => {
         books.forEach((book) => {
            // create element for each book.
            let content = `
-           <div class="product">
+           <div class="product link" id=${book._id}>
                         <a href="">Amazon</a>
-                        <button class="product-name link" id=${book._id}>${book.title}</button>
+                         <a  class="product-name"href="" >${book.title}</a>
                         <img src="${book.coverImageUrl}" alt="">
                         <div class="price">
                             <span class="current-price">$${book.discountedPrice}</span>
@@ -281,24 +250,26 @@ arr_of_taps.forEach((tap,index) => {
            
            container.innerHTML += content
         })
-    })
-    .then(() => {
-        {
-            let buttons = Array.from(document.getElementsByClassName('link'));
-            console.log(buttons);
-            
+        attachClickEvents();
+    }).catch((err) => {
+        console.log("Error fetching books:", err);
+    });
+    
+    function attachClickEvents() {
+        let buttons = document.querySelectorAll(".link");
+
+        if (buttons.length > 0) {
             buttons.forEach((button) => {
-                button.addEventListener('click', (e) => {
-                    localStorage.setItem('book',e.target.id)
-                    window.location.href = './product/index.html'
-                })
-            })
+                button.addEventListener("click", (e) => {
+                    let bookId = e.currentTarget.id; 
+                    if (bookId) {
+                        localStorage.setItem("book", bookId);
+                        window.location.href = "./product/index.html";
+                    }
+                });
+            });
         }
-    })
-    .catch((err) => {
-        console.log(err);
-    })  
-     
+    }
     
 }
 

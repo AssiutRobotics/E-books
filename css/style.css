@@ -547,6 +547,7 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 30px 0 20px 0;
 }
 main > button:first-child{
     left: 1rem;
@@ -572,7 +573,7 @@ main > button:hover{
 #imgContainer{
     position: relative;
     width: 100vw;
-    height: fit-content ;
+    height: 62vh;
     display: flex;
     justify-content: center;
     padding-top: 1%;
@@ -608,30 +609,40 @@ main > button:hover{
     }
 }
 .visible{
-    animation: visible 0.5s forwards linear;
+    animation: visible 1.5s forwards linear ;
 }
 
 @keyframes visible {
     0%{
-        transform: translateY(-100%);
+        transform: translatex(-100%);
         opacity: 1;
     }
     25%{
-        transform: translateY(25px);
+        transform: translatex(-75px);
     }
     50%{
-        transform: translateY(-15px);
+        transform: translatex(-50px);
     }
     75%{
-        transform: translateY(5px);
+        transform: translatex(-25px);
     }
     100%{
-        transform: translateY(00%);
+        transform: translatex(00%);
         opacity: 1;
     }
 }
+@media (max-width: 992px) {
+    #imgContainer {
+        height: 54vh;
+    }  
 
+}
+@media (max-width: 420px) {
+    #imgContainer {
+        height: 27vh;
+    }  
 
+}
 /* ------------------------------------------------------------------------------------------------------------------------------------------------ */
 /* ----------------------------------------------button section----------------------------------------------------------------------------------- */
 #buttonContainer{
@@ -642,52 +653,58 @@ main > button:hover{
     flex-direction: row;
     justify-content: center;
     transform: translateX(-50%);
-    bottom: 1rem;
+    bottom: 1.5rem;
     z-index: 1;
     
 }
 
 #buttonContainer button{
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
     border-radius: 0;
     border: 1px solid #000;
     background-color: #fff;
     border-radius: 50% ;
     margin: 1px;
 }
+
+
 #buttonContainer button:hover{
     opacity: 0.7;
 }
 
 #numbers{
-    width: 10%;
+    width: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+@media (max-width: 420px) {
+    #buttonContainer button{
+        width: 14px;
+        height: 14px;
+    }  
+    #numbers{
+        width: 23%;
+    }
 }
 .Active{
     transform: scale(1.25);
     background-color: #0f0 !important;
 }
 
-/* Small */
-@media (max-width:492px) {
-    main img {
-        height: 155px;
 
-    }
-}
 #details{
     z-index: 2;
     text-align: left; 
     width: 100vw;  
     display: flex; 
-    margin-left: 10%;
+    margin-left: 40px;
     flex-direction: column; 
     justify-content: space-between; 
     font-size: xx-large;
+    padding: 20px 0;
 }
 #details h1{
     color: #333;
@@ -702,7 +719,7 @@ main > button:hover{
     color: #777777;
 }
 #shop_now{
-    margin-top: 2rem;
+    margin-top: 8px;
     width: 20%;
     height: 3rem;
     overflow: hidden;
@@ -718,7 +735,19 @@ main > button:hover{
     background-color: #62ab00;
     color: #fff;
 }
+/* Small */
+@media (max-width:492px) {
+    main img {
+        height: 155px;
 
+    }
+    #details{
+        margin-left: 20px;
+    }
+    #prev,#next{
+        display: none;
+    }
+}
 /*ُEnd Main*/
 
 /*Start features*/
@@ -793,7 +822,7 @@ main > button:hover{
 .ads img {
     width: 100%;
 }
-
+/* إعدادات عامة */
 .products {
     padding-top: 85px;
     padding-bottom: 100px;
@@ -812,81 +841,7 @@ main > button:hover{
     border: 1px solid #e0e0e0;
 }
 
-.facilities {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 95%;
-    height: auto;
-    background-color: white;
-    box-shadow: 0px 0px 5px #bebdbd;
-    position: absolute;
-    bottom: 20%;
-}
-
-.facilities span {
-    width: 25%;
-    padding: 0.4rem 2px;
-    border-left: rgb(219, 221, 222) 1px solid;
-    cursor: pointer;
-}
-
-.fadeIn {
-    animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        display: none;
-        opacity: 0;
-        transform: translateY(-300%);
-    }
-
-    to {
-        display: flex;
-        transform: translateY(0%);
-
-    }
-}
-
-.fadeOut {
-    animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-    from {
-        display: flex;
-
-        transform: translateY(00%);
-    }
-
-    to {
-        display: none;
-
-        opacity: 0;
-        transform: translateY(-300%);
-
-    }
-}
-
-.facilities span:hover {
-    animation: coloring 0.5s forwards;
-}
-
-@keyframes coloring {
-    to {
-        color: #62ab00;
-    }
-}
-
-/* Small */
-@media (max-width:492px) {
-    .products .products-header {
-        flex-direction: column;
-        width: 100%;
-    }
-}
-
+/* تبويبات المنتجات */
 .products .products-header span {
     padding: 14px 28px;
     font-weight: 600;
@@ -925,37 +880,48 @@ main > button:hover{
     border-color: #62ab00 transparent transparent transparent;
 }
 
+/* تصميم المنتجات */
 .products-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     padding-bottom: 0.5rem;
 }
 
 .products-content .product {
-    width: 214px;
+    width: 225px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 15px;
     margin-top: 40px;
     position: relative;
+    background-color: #fff;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-
-.products-content .product a {
-    font-size: 14px;
-    color: #999;
-    width: 183px;
-    transition: .5s;
+.products-content .product:hover {
+    transform: scale(1.05);
 }
 
-.products-content .product a:hover {
-    color: black;
+.products-content .product img {
+    width: 100%;
+    cursor: pointer;
+    height: 205px;
+    border-radius: 5px;
 }
+@media (max-width: 492px) {
+    .products-content .product img {
+        width: 90%;
+    }
+
+}
+
 
 .products-content .product .product-name {
     overflow: hidden;
@@ -970,9 +936,26 @@ main > button:hover{
     color: #62ab00;
 }
 
-.products-content .product img {
-    width: 100%;
-    cursor: pointer;
+.products-content .product a {
+    font-size: 14px;
+    color: #999;
+    width: 183px;
+    transition: .5s;
+    text-decoration: none;
+}
+
+.products-content .product a:hover {
+    color: black;
+}
+
+/* السعر والتخفيض */
+.price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-top: 8px;
 }
 
 .price .current-price {
@@ -996,8 +979,82 @@ main > button:hover{
     font-weight: bold;
 }
 
-/* Small */
-@media (max-width:492px) {
+/* أيقونات التفاعل */
+.facilities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    height: auto;
+    background-color: white;
+    box-shadow: 0px 0px 5px #bebdbd;
+    position: absolute;
+    bottom: 20%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.product:hover .facilities {
+    opacity: 1;
+}
+
+.facilities span {
+    width: 25%;
+    padding: 0.4rem 2px;
+    border-left: rgb(219, 221, 222) 1px solid;
+    cursor: pointer;
+}
+
+.facilities span:hover {
+    animation: coloring 0.5s forwards;
+}
+
+/* التأثيرات */
+@keyframes coloring {
+    to {
+        color: #62ab00;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        display: none;
+        opacity: 0;
+        transform: translateY(-300%);
+    }
+    to {
+        display: flex;
+        transform: translateY(0%);
+    }
+}
+
+.fadeOut {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        display: flex;
+        transform: translateY(0%);
+    }
+    to {
+        display: none;
+        opacity: 0;
+        transform: translateY(-300%);
+    }
+}
+
+/* الشاشات الصغيرة */
+@media (max-width: 492px) {
+    .products .products-header {
+        flex-direction: column;
+        width: 100%;
+    }
+
     .products-content {
         flex-direction: column;
         width: 100%;
@@ -1005,6 +1062,7 @@ main > button:hover{
 
     .products-content .product {
         width: 100%;
+        padding-bottom: 15px;
     }
 
     .products-content .inactive {
@@ -1020,15 +1078,21 @@ main > button:hover{
     }
 
     .products-content .product .price .discount {
-        font-size: 22px;
+        font-size: 16px;
     }
 }
+.Featured_Products .product img {
+width: 90% !important;
 
-/* large */
-@media (min-width:493px) {
+}
+/* الشاشات الكبيرة */
+@media (min-width: 493px) {
     .products .products-content {
         height: 780px;
         overflow: hidden;
+    }
+    .Featured_Products   {
+        height: fit-content !important;
     }
 }
 
@@ -1143,7 +1207,13 @@ main > button:hover{
 }
 
 .best-seller-book .col .product img {
-    width: 120px;
+    width: 163px;
+}
+@media (max-width: 443px) {
+    .best-seller-book .col .product img {
+        height: 122px;
+        width: 122px;
+    }
 }
 
 .best-seller-book .products-content .product a {
@@ -1429,12 +1499,14 @@ main > button:hover{
 }
 
 /* Small */
-@media (max-width:492px) {
-    /* .childern-books .col .product {
-        gap: 0;
-    } */
+@media (max-width: 492px) {
+    .p1  .products-content .product img {
+        padding: 25px 0;
+    }
+    .p1 .price{
+        padding-bottom: 10px;
+    }
 }
-
 
 /*start Banner*/
 .banner {
