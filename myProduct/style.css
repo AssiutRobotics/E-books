@@ -1,0 +1,13 @@
+.facilities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.facilities span {
+    width: 50%;
+    padding: 0.4rem 2px;
+    border-left:none;
+}
+.facilities span:first-child{
+    border-right:1px solid rgb(219, 221, 222);
+}

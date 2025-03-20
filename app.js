@@ -29,7 +29,10 @@ arr_of_taps.forEach((tap,index) => {
 }
 // make the hover effect on the products
 {
-    let arr_of_products = Array.from(document.getElementsByClassName('product'));
+    function hoverEffect(){
+        let arr_of_products = Array.from(document.getElementsByClassName('productContent'));
+        let arr_of_product = Array.from(document.getElementsByClassName('product'));
+
     console.log(arr_of_products);
     
     arr_of_products.forEach((product) => {
@@ -46,7 +49,26 @@ arr_of_taps.forEach((tap,index) => {
             product_facilities.classList.add('fadeOut');
             
         })
-    })
+    }) 
+
+    arr_of_product.forEach((product) => {
+        let product_facilities = product.getElementsByClassName('facilities')[0];
+        console.log(product_facilities);
+        
+        product.addEventListener('mouseover', () => {
+            product_facilities.classList.remove('fadeOut');
+            product_facilities.classList.add('fadeIn');
+            
+        })
+        product.addEventListener('mouseout', () => {
+            product_facilities.classList.remove('fadeIn');
+            product_facilities.classList.add('fadeOut');
+            
+        })
+    }) 
+    }
+
+    hoverEffect();
 }
 // make the account hover mak action 
 {
@@ -222,15 +244,16 @@ arr_of_taps.forEach((tap,index) => {
     let container = document.getElementById('products-content');
     //fetch for books
     fetch('https://e-books-mu.vercel.app/books/all')
-    .then((res) => res.json())
-    .then((data) => {
-        let books = data.data.books
-        console.log(books);
-        
-        books.forEach((book) => {
-           // create element for each book.
-           let content = `
-           <div class="product link" id=${book._id}>
+        .then((res) => res.json())
+        .then((data) => {
+            let books = data.data.books
+            console.log(books);
+
+            books.forEach((book) => {
+                // create element for each book.
+                let content = `
+           <div class=" productContent" >
+                    <div class="product link"id=${book._id} >
                         <a href="">Amazon</a>
                          <a  class="product-name"href="" >${book.title}</a>
                         <img src="${book.coverImageUrl}" alt="">
@@ -239,38 +262,44 @@ arr_of_taps.forEach((tap,index) => {
                             <span class="original-price">$${book.originalPrice}</span>
                             <span class="discount">-${book.discountPercentage}</span>
                         </div>
+                     </div>
                         <div class="fadeOut facilities">
-                            <span><i class="fa-solid fa-cart-shopping"></i></span>
+                             <span><i class="fa-solid fa-cart-shopping"></i></span>
                             <span><i class="fa-solid fa-heart"></i></span>
                             <span><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
                             <span><i class="fa-solid fa-eye"></i></span>
                         </div>
-                    </div>`
-           // pass them to the container of them
-           
-           container.innerHTML += content
-        })
-        attachClickEvents();
-    }).catch((err) => {
-        console.log("Error fetching books:", err);
-    });
-    
+                    
+            </div>`
+                // pass them to the container of them
+
+                container.innerHTML += content
+            })
+            attachClickEvents();
+            hoverEffect();
+        }).catch((err) => {
+            console.log("Error fetching books:", err);
+        });
+
     function attachClickEvents() {
         let buttons = document.querySelectorAll(".link");
+        console.log("buttons");
 
+        console.log(buttons);
         if (buttons.length > 0) {
             buttons.forEach((button) => {
                 button.addEventListener("click", (e) => {
-                    let bookId = e.currentTarget.id; 
+                    let bookId = e.currentTarget.id;
                     if (bookId) {
                         localStorage.setItem("book", bookId);
                         window.location.href = "./product/index.html";
                     }
                 });
             });
+
         }
     }
-    
+
 }
 
 // make action when the user click on the product

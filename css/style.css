@@ -896,18 +896,13 @@ main > button:hover{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 40px;
     position: relative;
     background-color: #fff;
-    padding: 10px 0;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    
 }
 
-.products-content .product:hover {
-    transform: scale(1.05);
-}
+
 
 .products-content .product img {
     width: 100%;
@@ -946,6 +941,28 @@ main > button:hover{
 
 .products-content .product a:hover {
     color: black;
+}
+.productContent{
+    width: 225px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    background-color: #fff;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.productContent:hover .facilities {
+    opacity: 1;
+}
+
+.products-content .productContent:hover {
+    transform: scale(1.05);
 }
 
 /* السعر والتخفيض */
@@ -990,6 +1007,7 @@ main > button:hover{
     box-shadow: 0px 0px 5px #bebdbd;
     position: absolute;
     bottom: 20%;
+    left: 6px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
@@ -1662,4 +1680,14 @@ footer .footer-inner .copyright span {
     to {
         max-height: 00vh;
     }
+}
+.best-sellers .product{
+    padding: 10px 0;
+}
+.best-sellers h2{
+    margin-bottom: 50px;
+}
+.best-seller-book .product,
+.offers .product{
+    padding: 51px 0;
 }
