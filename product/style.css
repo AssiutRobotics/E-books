@@ -261,3 +261,9 @@ display: none;
         display: none;
     }
 }
+@media (min-width: 495px) {
+    .Mproduct  .best-sellers .products-content {
+        height: 296px !important;
+        overflow: hidden;
+    }
+}
