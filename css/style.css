@@ -417,6 +417,7 @@ header .Second-row .sign-cart .cart span {
 }
 .active{
     display: flex !important;
+    justify-content: center;
 }
 .sub_menu span{
     
@@ -824,7 +825,7 @@ main > button:hover{
 }
 /* إعدادات عامة */
 .products {
-    padding-top: 85px;
+    padding-top: 50px;
     padding-bottom: 100px;
 }
 
@@ -909,6 +910,10 @@ main > button:hover{
     cursor: pointer;
     height: 205px;
     border-radius: 5px;
+}
+.best-seller-book .products-content .product img {
+    height: 150px;
+
 }
 @media (max-width: 492px) {
     .products-content .product img {
@@ -1071,6 +1076,7 @@ main > button:hover{
     .products .products-header {
         flex-direction: column;
         width: 100%;
+        margin-bottom: 25px;
     }
 
     .products-content {
@@ -1116,9 +1122,7 @@ width: 90% !important;
 
 /*End Products*/
 /*offers*/
-.offers {
-    padding-bottom: 50px;
-}
+
 
 .offers h2 {
     width: 90%;
@@ -1293,11 +1297,11 @@ width: 90% !important;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 20px;
 }
 
 .best-sellers h2 {
-    padding-top: 75px;
+    padding-top: 25px;
     padding-bottom: 40px;
     font-weight: 600;
     font-size: 18px;
@@ -1305,7 +1309,9 @@ width: 90% !important;
     position: relative;
     font-size: 20px;
 }
+.best-seller h2{
 
+}
 .best-sellers h2::after {
     content: "";
     position: absolute;
@@ -1324,6 +1330,12 @@ width: 90% !important;
     }
 }
 
+@media (min-width: 495px) {
+    .best-seller .products-content {
+        height: 318px;
+        
+    }
+}
 
 
 .video {
@@ -1687,7 +1699,9 @@ footer .footer-inner .copyright span {
 .best-sellers h2{
     margin-bottom: 50px;
 }
-.best-seller-book .product,
+.best-seller-book .product{
+    padding: 22px 0;
+}
 .offers .product{
     padding: 51px 0;
 }
