@@ -4,7 +4,7 @@ if(localStorage.getItem("ID_Of_book") !== null){
 
 else{
     document.getElementById("submitBTN").addEventListener("click", (e) => {
-       UploadBook(); 
+        uploadBook(); 
     }); 
     
 }
@@ -54,7 +54,6 @@ async function uploadBook() {
                     coverImageUrl.value = ""
                     stock.value = ""
                     brand.value = ""
-                    additionalImages.value = ""
                 } else {
                     alert(`Error adding book : ${fetchAPI.status}`)
 
@@ -132,7 +131,6 @@ async function updateBook(id) {
                     coverImageUrl.value = ""
                     stock.value = ""
                     brand.value = ""
-                    additionalImages.value = ""
                     window.location.href = "../myProduct/index.html";
                 } else {
                     alert(`Error adding book : ${fetchAPI.status}`)

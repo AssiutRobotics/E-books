@@ -23,9 +23,9 @@
     
     fetch(url + id) 
     .then(response => response.json())
-    .then(data => {return data.data.book})
+    .then(data => {return data.data})
     .then(book => {
-        console.log(book.additionalImages);
+        // console.log(book.additionalImages);
         
         name.textContent = book.title ; // product name form fetch
         brand.textContent  = book.author ; // product brand form fetch

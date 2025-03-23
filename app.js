@@ -132,6 +132,15 @@
 {
     let index = 0;
     let images = document.querySelectorAll('.slider_img');
+    let author = ["Eckhart Tolle","Stephen R. Covey","Brené Brown"];
+    let name = ["The Power of Now",  "The 7 Habits of Highly Effective People", "Daring Greatly"];
+    let description = ["A book that encourages living in the present moment, offering practical advice on reducing stress and anxiety by focusing on the now.",
+        "A self-help book that provides a principle-centered approach to solving personal and professional problems.",
+        "A book about embracing vulnerability as a strength and how it can lead to a more fulfilling life."
+        ];
+    let author_name = document.getElementById('author_name');
+    let book_name = document.getElementById('book_name');
+    let book_description = document.getElementById('description');
     let buttonContainer = document.getElementById('numbers');
     let buttons = [];
 
@@ -162,6 +171,9 @@
         images.forEach((img, i) => {
             if (i === index) {
                 img.classList.add('visible');
+                author_name.innerHTML = author[i];
+                book_name.innerHTML = name[i];
+                book_description.innerHTML = description[i];
             } else {
                 img.classList.remove('visible');
             }
