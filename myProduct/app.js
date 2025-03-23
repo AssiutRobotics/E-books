@@ -6,7 +6,8 @@
     fetch('https://e-books-mu.vercel.app/books/all')
         .then((res) => res.json())
         .then((data) => {
-            let books = data.data.books
+            let books = data.data;
+            
             console.log(books);
 
             books.forEach((book) => {
@@ -71,20 +72,22 @@
 
         // }
     }
+    async function deleteBook(id) {
+        let url = `https://assiutrobotics.github.io/E-books/books/delete/${id}`;
+        try {
+            let res = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "id": id
+                }
+            })
+        }
+        catch{
+            console.log("Error deleting book");
+        }
+    }
+    
+}
 
-}
-async function deleteBook(id) {
-    let url = `https://assiutrobotics.github.io/E-books/books/delete/${id}`;
-    try {
-        let res = await fetch(url, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "id": id
-            }
-        })
-    }
-    catch{
-        console.log("Error deleting book");
-    }
-}
+

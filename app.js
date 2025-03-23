@@ -1,31 +1,31 @@
 // make taps 
 {
-let arr_of_taps = Array.from(document.getElementsByClassName('Taps'));
-console.log(arr_of_taps);
+    let arr_of_taps = Array.from(document.getElementsByClassName('Taps'));
+    console.log(arr_of_taps);
 
-let arr_of_contents = [document.getElementsByClassName('Featured_Products')[0],
-                       document.getElementsByClassName('New_Arrivals')[0],
-                       document.getElementsByClassName('Most-viewed')[0]
-                    ];
-console.log(arr_of_contents);
+    let arr_of_contents = [document.getElementsByClassName('Featured_Products')[0],
+                        document.getElementsByClassName('New_Arrivals')[0],
+                        document.getElementsByClassName('Most-viewed')[0]
+                        ];
+    console.log(arr_of_contents);
 
-arr_of_taps.forEach((tap,index) => {
-    tap.addEventListener('click', () => {
-        arr_of_contents.forEach((content,index_of_content) => {
-            if(index == index_of_content){
-                content.classList.remove('disabled')
-            }else{
-                content.classList.add('disabled')
-            }
-        })
-        tap.classList.add('active');
-        arr_of_taps.forEach((tap,index_of_tap) => {
-            if(index != index_of_tap){
-                tap.classList.remove('active');
-            }
+    arr_of_taps.forEach((tap,index) => {
+        tap.addEventListener('click', () => {
+            arr_of_contents.forEach((content,index_of_content) => {
+                if(index == index_of_content){
+                    content.classList.remove('disabled')
+                }else{
+                    content.classList.add('disabled')
+                }
+            })
+            tap.classList.add('active');
+            arr_of_taps.forEach((tap,index_of_tap) => {
+                if(index != index_of_tap){
+                    tap.classList.remove('active');
+                }
+            })
         })
     })
-})
 }
 // make the hover effect on the products
 {
@@ -72,6 +72,7 @@ arr_of_taps.forEach((tap,index) => {
 }
 // make the account hover mak action 
 {
+    // account dropdown list
     let list_of_my_account = document.getElementById('my_account');
     let account_sub_menu = document.getElementById('account_sub_menu');
     console.log(list_of_my_account,account_sub_menu);
@@ -86,6 +87,7 @@ arr_of_taps.forEach((tap,index) => {
         
     })
 
+    // dropdown lists 
     let list_of_lists_container = Array.from(document.getElementsByClassName('sub_menu_container'));
     let list_of_lists = Array.from(document.getElementsByClassName('sub_menu'));
 
