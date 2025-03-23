@@ -132,11 +132,10 @@
 {
     let index = 0;
     let images = document.querySelectorAll('.slider_img');
-    let author = ["Eckhart Tolle","Stephen R. Covey","Brené Brown"];
-    let name = ["The Power of Now",  "The 7 Habits of Highly Effective People", "Daring Greatly"];
-    let description = ["A book that encourages living in the present moment, offering practical advice on reducing stress and anxiety by focusing on the now.",
-        "A self-help book that provides a principle-centered approach to solving personal and professional problems.",
-        "A book about embracing vulnerability as a strength and how it can lead to a more fulfilling life."
+    let author = ["H.G.VVeIIs","I.D. Kurtness"];
+    let name = ["Empire Of The Ants",  "De Vengeance"];
+    let description = ["Cover up front of book and leave summary",
+        "Cover up front of book and leave summary",
         ];
     let author_name = document.getElementById('author_name');
     let book_name = document.getElementById('book_name');
@@ -273,7 +272,7 @@
                         <div class="price">
                             <span class="current-price">$${book.discountedPrice}</span>
                             <span class="original-price">$${book.originalPrice}</span>
-                            <span class="discount">-${book.discountPercentage}</span>
+                            <span class="discount">-${book.discountPercentage.toFixed(2)}%</span>
                         </div>
                      </div>
                         <div class="fadeOut facilities">

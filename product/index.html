@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../register/style.css">
     <link rel="stylesheet" href="style.css">
@@ -16,7 +16,14 @@
         rel="stylesheet">
 </head>
 
+
+
 <body>
+ <div id="loading-spinner" class="loading-spinner"></div>
+ <div id="content" class="content hidden">
+     <!-- Your existing content here -->
+    
+
     <nav>
         <div class="container">
             <div>
@@ -40,7 +47,7 @@
                         <span><a href="../sign/index.html">Sign in</a></span>
                         <span><a href="../register/index.html">Register</a></span>
                         <span><a href="../upload book/index.html">Upload a Book</a></span>
-                        <span>Cart</span>
+                        <span><a href="../shoppingCart/index.html">Cart </a></span>
                     </div>
                 </li>
                 <li>
@@ -60,10 +67,8 @@
     <header>
         <div class="container">
             <div class="frist-row">
-                <div class="logo">
-                    <a href="../index.html">
-                        <img src="../images/logo.png" alt="">
-                    </a>
+                <div class="logo"> 
+                    <a href="../index.html"><img src="../images/logo.png" alt=""> </a>
                     <div class="contact-num">
                         <i class="fa-solid fa-headphones-simple"></i>
                         <span>
@@ -76,7 +81,7 @@
 
                 <ul>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;">
                             <span>HOME</span>
                             <i class=" fa-solid fa-chevron-down"></i>
                         </div>
@@ -88,7 +93,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>CATALOG</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -126,14 +131,14 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>SPECIALS</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <container id="SPECIALS" class="  sub_menu">
                             <div>
 
-                                <img src="./images/module1.webp" alt="">
+                                <img src="../images/module1.webp" alt="">
 
                                 <div>
                                     <h5>A Million Little
@@ -146,7 +151,7 @@
                             </div>
                             <div>
 
-                                <img src="./images/product10.webp" alt="">
+                                <img src="../images/product10.webp" alt="">
 
                                 <div>
                                     <h5>A Million Little
@@ -158,7 +163,7 @@
                                 </div>
                             </div>
                             <div>
-                                <img src="./images/playing-video.avif" alt="">
+                                <img src="../images/playing-video.avif" alt="">
 
                                 <div>
                                     <h5>A Million Little
@@ -172,12 +177,12 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <container id="PAGES" class=" sub_menu">
-                            <span style="">
+                            <span>
                                 <p>
                                     COLLECTION PAGES
                                     <i class="fa-solid fa-chevron-right"></i>
@@ -196,7 +201,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -247,7 +252,7 @@
                 <div class="search">
                     <input type="text" id="search_bar" placeholder="Search here...">
                     <button id="search_btn">Search</button>
-                    <div id="found_data_container" class="disabled">
+                    <!-- <div id="found_data_container" class="disabled">
                         <div class="search_result">
                             <img src="./images/img-buttom.webp" alt="">
                             <div class="result_info">
@@ -276,14 +281,14 @@
                                 <p class="price">asdasd</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="sign-cart">
                     <div class="signRegister">
                         <a class="sign" href="../sign/index.html">sign in</a>
                         <a href="../register/index.html"><span>or</span>Register</a>
                     </div>
-                    <a class="cart" href="">
+                    <a class="cart" href="../shoppingCart/index.html" style = "color: inherit !important;">
                         <i class="fa-brands fa-opencart"></i>
                         <div class="shop-cart">
                             Shopping Cart <span class="num">0</span>
@@ -612,9 +617,11 @@
             </div>
         </div>
     </footer>
+ </div>
     <script src="../app.js"></script>
     <script src="./app.js"></script>
     <script src="https://kit.fontawesome.com/79904cb93e.js" crossorigin="anonymous"></script>
+ 
 </body>
 
 </html>

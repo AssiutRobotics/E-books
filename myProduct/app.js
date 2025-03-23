@@ -21,7 +21,7 @@
                         <div class="price">
                             <span class="current-price">$${book.discountedPrice}</span>
                             <span class="original-price">$${book.originalPrice}</span>
-                            <span class="discount">-${book.discountPercentage}</span>
+                            <span class="discount">-${book.discountPercentage.toFixed(2)}%</span>
                         </div>
                      </div>
                         <div class="fadeOut facilities">
