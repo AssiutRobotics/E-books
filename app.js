@@ -100,7 +100,6 @@
         container.addEventListener('click', () => {
             list_of_lists[index].classList.toggle('dropDown');
             list_of_lists[index].classList.toggle('liftUp');
-
         })
     })
     list_of_lists_container.forEach((container,index) => {

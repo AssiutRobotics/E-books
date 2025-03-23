@@ -111,7 +111,7 @@ async function updateBook(id) {
             console.table('data form ',dataForm);
             
             try {
-                let fetchAPI = await fetch(`https://assiutrobotics.github.io/E-books/books/update/${id}`,
+                let fetchAPI = await fetch(`https://e-books-mu.vercel.app/books/update/${id}`,
                     {
                         method: "PUT",
                         headers: {
@@ -136,7 +136,6 @@ async function updateBook(id) {
                     window.location.href = "../myProduct/index.html";
                 } else {
                     alert(`Error adding book : ${fetchAPI.status}`)
-
                 }
             } catch (error) {
                 alert("Network error: Could not complete the request.");
@@ -171,7 +170,9 @@ function write_book(data){
     const description = document.getElementById("description");
     const brand = document.getElementById("brand");
     const tags = document.getElementById("tags");
+    const stock = document.getElementById("stock");
     const coverImageFiles = document.getElementById("coverImage");
+    const coverImageUrl = document.getElementById("coverImageUrl");
     form.method = "EDIT";
     title.value = data.title;
     author.value = data.author;
@@ -180,6 +181,9 @@ function write_book(data){
     description.value = data.description;
     brand.value = data.brand;
     tags.value = data.tags;
+    stock.value = data.stock;
+    coverImageUrl.value = data.coverImageUrl;
+
     // coverImageFiles.value = data.coverImage;
     // coverImageFiles.value = data.coverImage;
 }
