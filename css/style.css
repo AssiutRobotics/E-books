@@ -840,6 +840,13 @@ main > button:hover{
     display: flex;
     border: 1px solid #e0e0e0;
 }
+@media (max-width: 1200px) {
+
+    .products .products-header {
+
+        margin-bottom: 40px;
+    }
+}
 
 /* تبويبات المنتجات */
 .products .products-header span {
@@ -1093,6 +1100,7 @@ main > button:hover{
 
     .products-content .product a {
         width: fit-content;
+        margin: 7px 0;
     }
 
     .products-content .product .price {
@@ -1673,24 +1681,10 @@ footer .footer-inner .copyright span {
 }
 
 .liftUp {
-    display: flex !important;
-
-    animation: liftUp 0.5s forwards linear;
+    display: none;
 }
 
-@keyframes liftUp {
-    from {
-        max-height: 100vh;
-    }
 
-    50% {
-        max-height: 10vh;
-    }
-
-    to {
-        max-height: 00vh;
-    }
-}
 .best-sellers .product{
     padding: 10px 0;
 }
