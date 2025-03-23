@@ -306,7 +306,7 @@
             </div>
             <div class="uploadBook">
                 <h2>Upload a Book</h2>
-                <form id="uploadForm">
+                <form id="uploadForm" method="POST">
                     <label for="title">Book Title:</label>
                     <input type="text" id="title" name="title" required>
 
@@ -338,7 +338,7 @@
                     <label for="additionalImages">Additional Images:</label>
                     <input type="file" id="additionalImages" name="additionalImages" accept="image/*" multiple>
 
-                    <button type="button" onclick="uploadBook()">Upload Book</button>
+                    <button type="button" id="submitBTN">Upload Book</button>
                 </form>
             </div>
 
@@ -372,68 +372,7 @@
 
 
         
-        async function uploadBook() {
-            let today = new Date();
-            let year = today.getFullYear();
-            let month = String(today.getMonth() + 1).padStart(2, '0');
-            let day = String(today.getDate()).padStart(2, '0');
-            let formattedDate = `${year}-${month}-${day}`;
-
-            if (title.value && author.value && description.value && originalPrice.value && discountedPrice.value && coverImageUrl.value && stock.value && brand.value) {
-                // if (/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(coverImageUrl.value)) {
-                    let dataForm = {
-                        title: title.value,
-                        author: author.value,
-                        description: description.value,
-                        originalPrice: parseFloat(originalPrice.value),
-                        discountedPrice: parseFloat(discountedPrice.value),
-                        coverImageUrl: coverImageUrl.value,
-                        // moreImages: Array.from(additionalImages.files),
-                        stock: parseInt(stock.value, 10),
-                        publicationDate: formattedDate,
-                        brand: brand.value
-                    };
-                    console.table('data form ',dataForm);
-                    
-                    try {
-                        let fetchAPI = await fetch("https://e-books-mu.vercel.app/books/add",
-                            {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify(dataForm)
-                            }
-                        )
-                        let response = await fetchAPI.json()
-                        if (fetchAPI.ok) {
-                            
-                            alert("The book has been successfully added!");                    // console.log(response)
-                            title.value = ""
-                            author.value = ""
-                            description.value = ""
-                            originalPrice.value = ""
-                            discountedPrice.value = ""
-                            coverImageUrl.value = ""
-                            stock.value = ""
-                            brand.value = ""
-                            additionalImages.value = ""
-                        } else {
-                            alert(`Error adding book : ${fetchAPI.status}`)
-
-                        }
-                    } catch (error) {
-                        alert("Network error: Could not complete the request.");
-                        console.error("Error:", error);
-                    }
-                // } else {
-                //     alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
-
-                // }
-            } else {
-                alert("Please fill all the fields");
-            }
-        }
+        
     </script>
 
 </body>

@@ -246,7 +246,7 @@ arr_of_taps.forEach((tap,index) => {
     fetch('https://e-books-mu.vercel.app/books/all')
         .then((res) => res.json())
         .then((data) => {
-            let books = data.data.books
+            let books = data.data
             console.log(books);
 
             books.forEach((book) => {

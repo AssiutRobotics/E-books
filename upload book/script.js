@@ -1,41 +1,83 @@
-function uploadBook() {
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const originalPrice = document.getElementById("originalPrice").value;
-    const discountedPrice = document.getElementById("discountedPrice").value;
-    const description = document.getElementById("description").value;
-    const brand = document.getElementById("brand").value;
-    const tags = document.getElementById("tags").value;
-    const coverImageFiles = document.getElementById("coverImage").files;
-  
-    const bookData = {
-        title,
-        author,
-        originalPrice,
-        discountedPrice,
-        description,
-        brand,
-        tags,
-    };
 
-    let books = JSON.parse(localStorage.getItem("uploadedBooks")) || [];
+async function uploadBook() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+    let day = String(today.getDate()).padStart(2, '0');
+    let formattedDate = `${year}-${month}-${day}`;
 
-    books.push(bookData);
+    if (title.value && author.value && description.value && originalPrice.value && discountedPrice.value && coverImageUrl.value && stock.value && brand.value) {
+        // if (/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(coverImageUrl.value)) {
+            let dataForm = {
+                title: title.value,
+                author: author.value,
+                description: description.value,
+                originalPrice: parseFloat(originalPrice.value),
+                discountedPrice: parseFloat(discountedPrice.value),
+                coverImageUrl: coverImageUrl.value,
+                // moreImages: Array.from(additionalImages.files),
+                stock: parseInt(stock.value, 10),
+                publicationDate: formattedDate,
+                brand: brand.value
+            };
+            console.table('data form ',dataForm);
+            
+            try {
+                let fetchAPI = await fetch("https://e-books-mu.vercel.app/books/add",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(dataForm)
+                    }
+                )
+                let response = await fetchAPI.json()
+                if (fetchAPI.ok) {
+                    
+                    alert("The book has been successfully added!");                    // console.log(response)
+                    title.value = ""
+                    author.value = ""
+                    description.value = ""
+                    originalPrice.value = ""
+                    discountedPrice.value = ""
+                    coverImageUrl.value = ""
+                    stock.value = ""
+                    brand.value = ""
+                    additionalImages.value = ""
+                } else {
+                    alert(`Error adding book : ${fetchAPI.status}`)
 
-    localStorage.setItem("uploadedBooks", JSON.stringify(books));
+                }
+            } catch (error) {
+                alert("Network error: Could not complete the request.");
+                console.error("Error:", error);
+            }
+        // } else {
+        //     alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
 
-    document.getElementById("uploadForm").reset();
-}
-async function check_perform() { // function to check if there is a book to be edited and if there is, it will fetch the book and fill the form with the book data
-    if(localStorage.getItem("ID_Of_book") !== null){
-        console.log(localStorage.getItem("ID_Of_book"))
-        let data = await get_book(localStorage.getItem("ID_Of_book"));
-        console.log(data);
-        
-        write_book(data);
+        // }
+    } else {
+        alert("Please fill all the fields");
     }
 }
 
+if(localStorage.getItem("ID_Of_book") !== null){
+    console.log(localStorage.getItem("ID_Of_book"))
+    let data = await get_book(localStorage.getItem("ID_Of_book"));
+    console.log(data);
+    write_book(data);
+    document.getElementById("submitBTN").addEventListener("click", (e) => {
+        editBook(data._id); // send data in body of request
+    });
+}
+
+else{
+    document.getElementById("submitBTN").addEventListener("click", (e) => {
+       UploadBook(); 
+    }); 
+    
+}
 
 async function get_book(id){
     let url = 'https://e-books-mu.vercel.app/books/get/';
@@ -51,6 +93,7 @@ async function get_book(id){
     
 }
 function write_book(data){
+    const form = document.getElementsByTagName("form")[0];
     const title = document.getElementById("title");
     const author = document.getElementById("author");
     const originalPrice = document.getElementById("originalPrice");
@@ -59,6 +102,7 @@ function write_book(data){
     const brand = document.getElementById("brand");
     const tags = document.getElementById("tags");
     const coverImageFiles = document.getElementById("coverImage");
+    form.method = "EDIT";
     title.value = data.title;
     author.value = data.author;
     originalPrice.value = data.originalPrice;
@@ -70,3 +114,65 @@ function write_book(data){
     // coverImageFiles.value = data.coverImage;
 }
 check_perform();
+async function updateBook() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+    let day = String(today.getDate()).padStart(2, '0');
+    let formattedDate = `${year}-${month}-${day}`;
+
+    if (title.value && author.value && description.value && originalPrice.value && discountedPrice.value && coverImageUrl.value && stock.value && brand.value) {
+        // if (/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(coverImageUrl.value)) {
+            let dataForm = {
+                title: title.value,
+                author: author.value,
+                description: description.value,
+                originalPrice: parseFloat(originalPrice.value),
+                discountedPrice: parseFloat(discountedPrice.value),
+                coverImageUrl: coverImageUrl.value,
+                // moreImages: Array.from(additionalImages.files),
+                stock: parseInt(stock.value, 10),
+                publicationDate: formattedDate,
+                brand: brand.value
+            };
+            console.table('data form ',dataForm);
+            
+            try {
+                let fetchAPI = await fetch(`https://assiutrobotics.github.io/E-books/books/update/${id}`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(dataForm)
+                    }
+                )
+                let response = await fetchAPI.json()
+                if (fetchAPI.ok) {
+                    
+                    alert("The book has been successfully updated!");                    // console.log(response)
+                    title.value = ""
+                    author.value = ""
+                    description.value = ""
+                    originalPrice.value = ""
+                    discountedPrice.value = ""
+                    coverImageUrl.value = ""
+                    stock.value = ""
+                    brand.value = ""
+                    additionalImages.value = ""
+                } else {
+                    alert(`Error adding book : ${fetchAPI.status}`)
+
+                }
+            } catch (error) {
+                alert("Network error: Could not complete the request.");
+                console.error("Error:", error);
+            }
+        // } else {
+        //     alert("Invalid URL format for the cover image. Please use a valid image URL (jpg, png, etc.)");
+
+        // }
+    } else {
+        alert("Please fill all the fields");
+    }
+}

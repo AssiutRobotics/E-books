@@ -46,6 +46,7 @@
                 }) 
                 deleteBtn[i].addEventListener("click", (e) => {
                     // delete book with id id
+                    deleteBook(ids[i]);
                 }) 
             }
         }).catch((err) => {
@@ -71,4 +72,19 @@
         // }
     }
 
+}
+async function deleteBook(id) {
+    let url = `https://assiutrobotics.github.io/E-books/books/delete/${id}`;
+    try {
+        let res = await fetch(url, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "id": id
+            }
+        })
+    }
+    catch{
+        console.log("Error deleting book");
+    }
 }
