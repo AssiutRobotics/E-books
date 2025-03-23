@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - SmartBook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            max-width: 800px;
+            margin: 100px auto;
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .section {
+            width: 48%;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #333;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .auth-links,
+        .return-store {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .auth-links a,
+        .return-store a {
+            color: #007bff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .auth-links a:hover,
+        .return-store a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="breadcrumbs">
+        <a href="#">Home</a> > Account
+    </div>
+    <div class="container">
+        <!-- ✅ New Customer على الشمال -->
+        <div class="section">
+            <h2>New Customer</h2>
+            <p><strong>Register Account</strong></p>
+            <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep
+                track of the orders you have previously made.</p>
+            <button class="btn" onclick="location.href='register.html'">Continue</button>
+        </div>
+
+        <!-- ✅ Returning Customer على اليمين -->
+        <div class="section">
+            <h2>Returning Customer</h2>
+            <p><strong>I am a returning customer</strong></p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <p class="auth-links"><a href="#">Forgot your password?</a></p>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+            <p class="return-store"><a href="#">Return to Store</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            localStorage.setItem('userEmail', email);
+            window.location.href = './profile.html';
+        });
+    </script>
+</body>
+
+</html>
