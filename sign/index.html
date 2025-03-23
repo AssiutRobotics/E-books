@@ -184,7 +184,7 @@
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </p>
                             </span>
-                            
+
                             <span>BLOG</span>
                             <span>CONTACT US</span>
                             <span>FAQS</span>
@@ -200,7 +200,7 @@
                         <div class="link" style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </div>    
+                        </div>
                         <container id="PRODUCT_PAGES" class=" sub_menu">
                             <span>HORIZONTAL THUMBS</span>
                             <span>BERTICAL THUMBS</span>
@@ -216,18 +216,19 @@
                 </ul>
             </div>
             <div class="Second-row">
-                <button class="category" >
-                    <i class="fa-solid fa-bars" ></i>
+                <button class="category">
+                    <i class="fa-solid fa-bars"></i>
                     <span>Browse categories</span>
                     <i class="fa-solid fa-chevron-down"></i>
                     <div class="disabled" id="categories_content">
-                        <span>Arts & Photography 
+                        <span>Arts & Photography
                             <div class="sub_sub_list">
                                 <span>Biographies</span>
                                 <span>Business & Money</span>
                                 <span>Calendars</span>
                                 <span>Children's Books</span>
-                                <span>Comics</span></div>
+                                <span>Comics</span>
+                            </div>
                         </span>
                         <span>Biographies</span>
                         <span>Business & Money</span>
@@ -242,7 +243,7 @@
                         <span>+ More Categories</span>
                     </div>
                 </button>
-                
+
                 <div class="search">
                     <input type="text" id="search_bar" placeholder="Search here...">
                     <button id="search_btn">Search</button>
@@ -315,7 +316,7 @@
                     <h2>Returning Customer</h2>
                     <h4>I am a returning customer</h4>
                     <!-- <form action="https://e-books-mu.vercel.app/user/login" method="post" > -->
-                    <form  >
+                    <form>
                         <div class="row">
                             <label for="email">Email</label>
                             <input type="email" name="email" placeholder="Email">
@@ -339,62 +340,62 @@
 
         </div>
 
+    </div>
 
+    <footer>
+        <div class="footer-top"></div>
+        <div class="footer-inner">
+            <div class="container">
+                <p>Suspendisse in auctor augue. Cras fermentum est ac fermentum tempor. Etiam vel magna volutpat,
+                    posuere eros</p>
+                <img src="../images/payment.avif" alt="">
+                <p class="copyright">Copyright © 2019 <span> MassTechnologist.com.</span>All rights reserved.</p>
 
-        <footer>
-            <div class="footer-top"></div>
-            <div class="footer-inner">
-                <div class="container">
-                    <p>Suspendisse in auctor augue. Cras fermentum est ac fermentum tempor. Etiam vel magna volutpat,
-                        posuere eros</p>
-                    <img src="../images/payment.avif" alt="">
-                    <p class="copyright">Copyright © 2019 <span> MassTechnologist.com.</span>All rights reserved.</p>
-
-                </div>
             </div>
-        </footer>
-        <script src="../app.js"></script>
-        <script >
-            try{
+        </div>
+    </footer>
+    <script src="../app.js"></script>
+    <script>
+        try {
             let form = document.forms[0];
-            form.addEventListener('submit', async(e) => {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 let formData = new FormData(form);
                 console.log(formData.get('email'), formData.get('password'));
-                const res=await fetch('https://e-books-mu.vercel.app/user/login', {
+                const res = await fetch('https://e-books-mu.vercel.app/user/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        email: formData.get('email'),   
-                        password: formData.get('password')  
+                        email: formData.get('email'),
+                        password: formData.get('password')
                     })
                 })
                 const data = await res.json();
-                console.log(data);  
-                if(res.ok){
-                    localStorage.setItem("data",JSON.stringify(data.data));
-                    console.log("data in localStorage",localStorage.getItem("data"));
+                console.log(data);
+                if (res.ok) {
+                    localStorage.setItem("data", JSON.stringify(data.data));
+                    console.log("data in localStorage", localStorage.getItem("data"));
 
 
-                    let token =JSON.parse(localStorage.getItem("data")).token;
-                    console.log("token",token);
-                    
+                    let token = JSON.parse(localStorage.getItem("data")).token;
+                    console.log("token", token);
+
                     alert("Login successful");
                     // window.location.href = "../index.html";
                 }
-                else{
+                else {
                     alert(data.message)
-                }   
+                }
             });
-        }catch(e){
+        } catch (e) {
             alert(e.message);
             console.log(e);
         }
-            
 
-        </script> 
+
+    </script>
 </body>
 
 </html>

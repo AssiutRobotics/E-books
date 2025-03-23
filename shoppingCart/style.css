@@ -530,6 +530,7 @@ header .Second-row .sign-cart .cart span {
 }
 .shopping-cart h3 {
   margin-bottom: 5vh;
+  margin-top: 40px;
 }
 .shopping-cart table {
   margin-bottom: 20px;
