@@ -366,29 +366,36 @@
           e.preventDefault();
           let formData = new FormData(form);
           console.log(formData.get("email"), formData.get("password"));
-          const res = await fetch("https://e-books-mu.vercel.app/user/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: formData.get("email"),
-              password: formData.get("password"),
-            }),
-          });
-          const data = await res.json();
-          console.log(data);
-          if (res.ok) {
-            localStorage.setItem("data", JSON.stringify(data.data));
-            console.log("data in localStorage", localStorage.getItem("data"));
+          if (formData.get("email") && formData.get("password")) {
+            const res = await fetch(
+              "https://e-books-mu.vercel.app/user/login",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: formData.get("email"),
+                  password: formData.get("password"),
+                }),
+              }
+            );
+            const data = await res.json();
+            console.log(data);
+            if (res.ok) {
+              localStorage.setItem("data", JSON.stringify(data.data));
+              console.log("data in localStorage", localStorage.getItem("data"));
 
-            let token = JSON.parse(localStorage.getItem("data")).token;
-            console.log("token", token);
+              let token = JSON.parse(localStorage.getItem("data")).token;
+              console.log("token", token);
 
-            alert("Login successful");
-            window.location.href = "../index.html";
+              alert("Login successful");
+              window.location.href = "../index.html";
+            } else {
+              alert(data.message);
+            }
           } else {
-            alert(data.message);
+            alert("Fill in all required fields");
           }
         });
       } catch (e) {
@@ -396,48 +403,48 @@
         console.log(e);
       }
 
-    //   const signinBtn = document.getElementById("signinBtn");
-    //   if (signinBtn) {
-    //     signinBtn.addEventListener("click", function () {
-    //       const user = {
-    //         name: "Ahmed Ali",
-    //         email: "ahmed@example.com",
-    //         phone: "+201234567890",
-    //       };
+      //   const signinBtn = document.getElementById("signinBtn");
+      //   if (signinBtn) {
+      //     signinBtn.addEventListener("click", function () {
+      //       const user = {
+      //         name: "Ahmed Ali",
+      //         email: "ahmed@example.com",
+      //         phone: "+201234567890",
+      //       };
 
-    //       localStorage.setItem("user", JSON.stringify(user));
-    //       displayUserDetails();
-    //     });
-    //   }
-    //   function displayUserDetails() {
-    //     const user = JSON.parse(localStorage.getItem("user"));
-    //     if (user) {
-    //       document.getElementById("userDetails").innerHTML = `
-    //                         <h3>Welcome, ${user.name}</h3>
-    //                         <p>Email: ${user.email}</p>
-    //                         <p>Phone: ${user.phone}</p>
-    //                     `;
-    //     }
-    //   }
+      //       localStorage.setItem("user", JSON.stringify(user));
+      //       displayUserDetails();
+      //     });
+      //   }
+      //   function displayUserDetails() {
+      //     const user = JSON.parse(localStorage.getItem("user"));
+      //     if (user) {
+      //       document.getElementById("userDetails").innerHTML = `
+      //                         <h3>Welcome, ${user.name}</h3>
+      //                         <p>Email: ${user.email}</p>
+      //                         <p>Phone: ${user.phone}</p>
+      //                     `;
+      //     }
+      //   }
 
-    //   displayUserDetails();
+      //   displayUserDetails();
 
-    //   loginForm.addEventListener("submit", function (event) {
-    //     event.preventDefault();
+      //   loginForm.addEventListener("submit", function (event) {
+      //     event.preventDefault();
 
-    //     let name = document.getElementById("name").value;
-    //     let phone = document.getElementById("phone").value;
-    //     let address = document.getElementById("address").value;
+      //     let name = document.getElementById("name").value;
+      //     let phone = document.getElementById("phone").value;
+      //     let address = document.getElementById("address").value;
 
-    //     if (name && phone && address) {
-    //       let userData = { name, phone, address };
-    //       localStorage.setItem("loggedInUser", JSON.stringify(userData));
+      //     if (name && phone && address) {
+      //       let userData = { name, phone, address };
+      //       localStorage.setItem("loggedInUser", JSON.stringify(userData));
 
-    //       window.location.href = "../profile/account.html";
-    //     } else {
-    //       alert("Please fill in all fields!");
-    //     }
-    //   });
+      //       window.location.href = "../profile/account.html";
+      //     } else {
+      //       alert("Please fill in all fields!");
+      //     }
+      //   });
     </script>
   </body>
 </html>
