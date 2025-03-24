@@ -347,7 +347,7 @@ const add_to_cart = async (bookId) => {
             return;
         }
         
-    const response = await fetch('http://localhost:3000/user/addToCart',{
+    const response = await fetch('https://e-books-mu.vercel.app/user/addToCart',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
