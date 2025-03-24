@@ -1,0 +1,125 @@
+.register{
+padding-top: 30px;
+/* display: none; */
+
+}
+ .breadcrumb a{
+    font-size: 13px;
+    color: #5f5f5f;
+}
+ .breadcrumb span{
+margin: 0 5px;
+font-size: 13px;
+}
+ h1 {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-size: 35px;
+    color: #535252;
+
+}
+
+.register p {
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form .row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+
+}
+
+form .row label {
+    text-align: end;
+    width: 18%;
+    padding-right: 25px;
+    color: #666666;
+    font-size: 13px;
+}
+
+form .row label::before {
+    content: '* ';
+    color: red;
+}
+
+form .row input {
+    width: 100%;
+    padding: 10px 0 10px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+form .row input:focus{
+    box-shadow: 0 0 4px 1px rgb(86 192 255);
+outline: none;
+}
+
+form .row input::placeholder {
+    color: #999999;
+}
+
+.register button {
+    background-color: #fff;    ;
+    border: 2px solid #eee;
+    padding: 0px 30px;
+    font-size: 15px;
+    color: #7b7b7b;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 10px 20px 10px 10px;
+    cursor: pointer;
+}
+.register button:hover{
+    background-color: #62ab00;
+   color: #fff;
+}
+.register .submit{
+    display: flex;
+    align-items: start;
+}
+.register .submit span{
+    font-size: 15px;
+    color:#575656;
+}
+.register .submit a{
+    padding-left: 5px;
+    font-size: 15px;
+    color: #343434;
+    cursor: pointer;
+    transition: .5s;
+}
+.register .submit a:hover{
+    color: #62ab00;
+
+}
+
+@media (max-width: 800px) {
+    form .row{
+        flex-direction: column;
+        align-items: flex-start;
+        padding-right: 15px;
+    }
+    form .row label {
+       text-align: start;
+       width:  95%;
+       padding-right: 0;
+       margin-bottom: 15px;
+    }
+    form .row input{
+        width: 95%;
+    }
+    .register .submit{
+        flex-direction: row;
+    }
+}
