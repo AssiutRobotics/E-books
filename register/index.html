@@ -62,9 +62,7 @@
         <div class="container">
             <div class="frist-row">
                 <div class="logo">
-                    <a href="../index.html">
-                        <img src="../images/logo.png" alt="">
-                    </a>
+                    <img src="../images/logo.png" alt="">
                     <div class="contact-num">
                         <i class="fa-solid fa-headphones-simple"></i>
                         <span>
@@ -77,7 +75,7 @@
 
                 <ul>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;">
                             <span>HOME</span>
                             <i class=" fa-solid fa-chevron-down"></i>
                         </div>
@@ -89,7 +87,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>CATALOG</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -127,7 +125,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>SPECIALS</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -173,7 +171,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -184,7 +182,7 @@
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </p>
                             </span>
-                            
+
                             <span>BLOG</span>
                             <span>CONTACT US</span>
                             <span>FAQS</span>
@@ -197,10 +195,10 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </div>    
+                        </div>
                         <container id="PRODUCT_PAGES" class=" sub_menu">
                             <span>HORIZONTAL THUMBS</span>
                             <span>BERTICAL THUMBS</span>
@@ -216,37 +214,39 @@
                 </ul>
             </div>
             <div class="Second-row">
-                <button class="category" >
-                    <i class="fa-solid fa-bars" ></i>
-                    <span>Browse categories</span>
+                <button class="category sub_menu_container ">
+                    <i class="fa-solid fa-bars"></i>
+                    <span class="">Browse categories</span>
                     <i class="fa-solid fa-chevron-down"></i>
-                    <div class="disabled" id="categories_content">
-                        <span>Arts & Photography 
-                            <div class="sub_sub_list">
+                    <div class="sub_menu" id="categories_content">
+                        <span class="sub_menu_container">
+                            Arts & Photography <i class="fa-solid fa-chevron-right"></i>
+                            <div class="sub_sub_list sub_menu">
                                 <span>Biographies</span>
                                 <span>Business & Money</span>
                                 <span>Calendars</span>
                                 <span>Children's Books</span>
-                                <span>Comics</span></div>
+                                <span>Comics</span>
+                            </div>
                         </span>
                         <span>Biographies</span>
                         <span>Business & Money</span>
                         <span>Calendars</span>
                         <span>Children's Books</span>
-                        <span>Comics</span>
+                        <span id="mid_element">Comics</span>
                         <span>Perfomance Filters</span>
                         <span>Cookbooks</span>
                         <span>Accessories</span>
                         <span>Education</span>
                         <span>Indoor Living</span>
-                        <span>+ More Categories</span>
+                        <span id="height_controller">+ More Categories</span>
                     </div>
                 </button>
-                
+
                 <div class="search">
                     <input type="text" id="search_bar" placeholder="Search here...">
                     <button id="search_btn">Search</button>
-                    <div id="found_data_container" class="disabled">
+                    <!-- <div id="found_data_container" class="disabled">
                         <div class="search_result">
                             <img src="../images/img-buttom.webp" alt="">
                             <div class="result_info">
@@ -275,14 +275,14 @@
                                 <p class="price">asdasd</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="sign-cart">
                     <div class="signRegister">
-                        <a class="sign" href="../sign/index.html">sign in</a>
-                        <a href="../register/index.html"><span>or</span>Register</a>
+                        <a class="sign" href="./sign/index.html">sign in</a>
+                        <a href="./register/index.html"><span>or</span>Register</a>
                     </div>
-                    <a class="cart" href="">
+                    <a class="cart" href="../shoppingCart/index.html" style = "color: inherit !important;">
                         <i class="fa-brands fa-opencart"></i>
                         <div class="shop-cart">
                             Shopping Cart <span class="num">0</span>

@@ -21,7 +21,7 @@
                         <div class="price">
                             <span class="current-price">$${book.discountedPrice}</span>
                             <span class="original-price">$${book.originalPrice}</span>
-                            <span class="discount">-${book.discountPercentage}</span>
+                            <span class="discount">-${book.discountPercentage.toFixed(2)}%</span>
                         </div>
                      </div>
                         <div class="fadeOut facilities">
@@ -73,7 +73,7 @@
         // }
     }
     async function deleteBook(id) {
-        let url = `https://assiutrobotics.github.io/E-books/books/delete/${id}`;
+        let url = `https://e-books-mu.vercel.app/books/delete/${id}`;
         try {
             let res = await fetch(url, {
                 method: "DELETE",
@@ -82,6 +82,12 @@
                     "id": id
                 }
             })
+            console.log(res);
+            
+            if( res.status == 200){
+                alert("Book deleted successfully");
+                window.location.reload();
+            }
         }
         catch{
             console.log("Error deleting book");

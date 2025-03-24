@@ -43,7 +43,7 @@
                         <span><a href="../sign/index.html">Sign in</a></span>
                         <span><a href="../register/index.html">Register</a></span>
                         <span><a href="../upload book/index.html">Upload a Book</a></span>
-                        <span>Cart</span>
+                        <span><a href="../shoppingCart/index.html">Cart </a></span>
                     </div>
                 </li>
                 <li>
@@ -64,9 +64,7 @@
         <div class="container">
             <div class="frist-row">
                 <div class="logo">
-                    <a href="../index.html">
-                        <img src="../images/logo.png" alt="">
-                    </a>
+                    <img src="../images/logo.png" alt="">
                     <div class="contact-num">
                         <i class="fa-solid fa-headphones-simple"></i>
                         <span>
@@ -79,7 +77,7 @@
 
                 <ul>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;">
                             <span>HOME</span>
                             <i class=" fa-solid fa-chevron-down"></i>
                         </div>
@@ -91,7 +89,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>CATALOG</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -129,7 +127,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>SPECIALS</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -175,12 +173,12 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <container id="PAGES" class=" sub_menu">
-                            <span style="">
+                            <span>
                                 <p>
                                     COLLECTION PAGES
                                     <i class="fa-solid fa-chevron-right"></i>
@@ -199,7 +197,7 @@
                         </container>
                     </li>
                     <li class="sub_menu_container">
-                        <div class="link" style="cursor: pointer;" href="">
+                        <div style="cursor: pointer;" href="">
                             <span>PRODUCT PAGES</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -218,13 +216,14 @@
                 </ul>
             </div>
             <div class="Second-row">
-                <button class="category">
+                <button class="category sub_menu_container ">
                     <i class="fa-solid fa-bars"></i>
-                    <span>Browse categories</span>
+                    <span class="">Browse categories</span>
                     <i class="fa-solid fa-chevron-down"></i>
-                    <div class="disabled" id="categories_content">
-                        <span>Arts & Photography
-                            <div class="sub_sub_list">
+                    <div class="sub_menu" id="categories_content">
+                        <span class="sub_menu_container">
+                            Arts & Photography <i class="fa-solid fa-chevron-right"></i>
+                            <div class="sub_sub_list sub_menu">
                                 <span>Biographies</span>
                                 <span>Business & Money</span>
                                 <span>Calendars</span>
@@ -236,56 +235,56 @@
                         <span>Business & Money</span>
                         <span>Calendars</span>
                         <span>Children's Books</span>
-                        <span>Comics</span>
+                        <span id="mid_element">Comics</span>
                         <span>Perfomance Filters</span>
                         <span>Cookbooks</span>
                         <span>Accessories</span>
                         <span>Education</span>
                         <span>Indoor Living</span>
-                        <span>+ More Categories</span>
+                        <span id="height_controller">+ More Categories</span>
                     </div>
                 </button>
 
                 <div class="search">
                     <input type="text" id="search_bar" placeholder="Search here...">
                     <button id="search_btn">Search</button>
-                    <div id="found_data_container" class="disabled">
+                    <!-- <div id="found_data_container" class="disabled">
                         <div class="search_result">
-                            <img src="../images/img-buttom.webp" alt="">
+                            <img src="./images/img-buttom.webp" alt="">
                             <div class="result_info">
                                 <h6 class="title">asdasdasd</h6>
                                 <p class="price">asdasd</p>
                             </div>
                         </div>
                         <div class="search_result">
-                            <img src="../images/img-buttom.webp" alt="">
+                            <img src="./images/img-buttom.webp" alt="">
                             <div class="result_info">
                                 <h6 class="title">asdasdasd</h6>
                                 <p class="price">asdasd</p>
                             </div>
                         </div>
                         <div class="search_result">
-                            <img src="../images/img-buttom.webp" alt="">
+                            <img src="./images/img-buttom.webp" alt="">
                             <div class="result_info">
                                 <h6 class="title">asdasdasd</h6>
                                 <p class="price">asdasd</p>
                             </div>
                         </div>
                         <div class="search_result">
-                            <img src="../images/img-buttom.webp" alt="">
+                            <img src="./images/img-buttom.webp" alt="">
                             <div class="result_info">
                                 <h6 class="title">asdasdasd</h6>
                                 <p class="price">asdasd</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="sign-cart">
                     <div class="signRegister">
                         <a class="sign" href="../sign/index.html">sign in</a>
                         <a href="../register/index.html"><span>or</span>Register</a>
                     </div>
-                    <a class="cart" href="">
+                    <a class="cart" href="../shoppingCart/index.html" style = "color: inherit !important;">
                         <i class="fa-brands fa-opencart"></i>
                         <div class="shop-cart">
                             Shopping Cart <span class="num">0</span>
@@ -335,8 +334,8 @@
                     <input type="url" id="coverImageUrl" name="coverImageUrl"
                         placeholder="Example:https://example.com/pride-and-prejudice.jpg " required>
 
-                    <label for="additionalImages">Additional Images:</label>
-                    <input type="file" id="additionalImages" name="additionalImages" accept="image/*" multiple>
+                    <!-- <label for="additionalImages">Additional Images:</label>
+                    <input type="file" id="additionalImages" name="additionalImages" accept="image/*" multiple> -->
 
                     <button type="button" id="submitBTN">Upload Book</button>
                 </form>
@@ -359,21 +358,6 @@
 
     <script src="script.js"></script>
     <script src="../app.js"></script>
-    <script>
-        let title = document.getElementById("title");
-        let author = document.getElementById("author");
-        let description = document.getElementById("description");
-        let originalPrice = document.getElementById("originalPrice");
-        let discountedPrice = document.getElementById("discountedPrice");
-        let coverImageUrl = document.getElementById("coverImageUrl");
-        let stock = document.getElementById("stock");
-        let brand = document.getElementById("brand");
-        let additionalImages = document.getElementById("additionalImages")
-
-
-        
-        
-    </script>
 
 </body>
 
