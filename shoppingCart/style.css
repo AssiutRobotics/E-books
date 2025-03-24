@@ -667,3 +667,64 @@ footer .footer-inner .copyright span {
 }
 
 /* ------------------------------- End Footer ------------------------------- */
+
+
+
+
+
+
+
+
+
+/* profile page */
+
+.container-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 80%;
+  margin: 30px auto;
+  background-image: url(../images/video.webp);
+  background-size: cover;
+  background-position: center;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #e5e5e5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+  object-fit: cover;
+ 
+
+  
+}
+/* cyrcle image profile */
+.profile-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.profile-details h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.profile-details p {
+  font-size: 16px;
+  font-weight: 400;
+}

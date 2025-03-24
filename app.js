@@ -290,7 +290,9 @@
                     </div>
                  </div>
                     <div class="fadeOut facilities">
-                         <span><i class="fa-solid fa-cart-shopping"></i></span>
+                   
+                    <span onclick="add_to_cart('${book._id}')"><i class="fa-solid fa-cart-shopping"></i></span>
+                    
                         <span><i class="fa-solid fa-heart"></i></span>
                         <span><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
                         <span><i class="fa-solid fa-eye"></i></span>
@@ -328,6 +330,45 @@
         }
     }
 
+}
+
+
+
+const add_to_cart = async (bookId) => {
+
+    try {
+
+        const data=JSON.parse(localStorage.getItem('data'));
+        
+        console.log("token is :",data.token);
+        
+        if(!data){
+            alert("Please login first");
+            return;
+        }
+        
+    const response = await fetch('http://localhost:3000/user/addToCart',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${data.token}`
+        },
+        body: JSON.stringify({ bookId,quantity:1 })
+    })
+
+    const res = await response.json();
+    console.log(res);
+    if(!res.ok){
+        alert(res.message);
+        return;
+    }
+    
+    alert("Book added to cart successfully");
+
+    } catch (error) {
+        console.log(error);
+        alert(error.message);
+    }
 }
 
 // make action when the user click on the product
