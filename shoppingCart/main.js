@@ -3,6 +3,7 @@ let token =
 
 const url = "https://e-books-mu.vercel.app/user/getCart";
 
+
 let imageUrl = document.getElementById("img");
 let productName = document.getElementById("product-name");
 let quantity = document.getElementById("quantity-number");
