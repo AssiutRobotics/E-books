@@ -39,6 +39,8 @@
             let product_facilities = product.getElementsByClassName('facilities')[0];
             // console.log(product_facilities);
 
+            if (!product_facilities) return;
+
             product.addEventListener('mouseover', () => {
                 product_facilities.classList.remove('fadeOut');
                 product_facilities.classList.add('fadeIn');
@@ -54,6 +56,8 @@
         arr_of_product.forEach((product) => {
             let product_facilities = product.getElementsByClassName('facilities')[0];
             // console.log(product_facilities);
+
+            if (!product_facilities) return;
 
             product.addEventListener('mouseover', () => {
                 product_facilities.classList.remove('fadeOut');
