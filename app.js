@@ -335,40 +335,47 @@
 
 
 const add_to_cart = async (bookId) => {
-
     try {
+        const data = JSON.parse(localStorage.getItem('data'));
 
-        const data=JSON.parse(localStorage.getItem('data'));
-        
-        console.log("token is :",data.token);
-        
-        if(!data){
+        if (!data || !data.token) {
             alert("Please login first");
+            window.location.href = "./sign/index.html"; 
             return;
         }
-        
-    const response = await fetch('https://e-books-mu.vercel.app/user/addToCart',{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            authorization: `Bearer ${data.token}`
-        },
-        body: JSON.stringify({ bookId,quantity:1 })
-    })
 
-    const res = await response.json();
-    console.log(res);
-    if(!res.ok){
-        alert(res.message);
-        return;
-    }
-    
-    alert("Book added to cart successfully");
+        console.log("Token is:", data.token);
+
+        const response = await fetch('https://e-books-mu.vercel.app/user/addToCart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${data.token}`
+            },
+            body: JSON.stringify({ bookId, quantity: 1 })
+        });
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                alert("Your session has expired. Please login again.");
+                localStorage.removeItem('data'); 
+                window.location.href = "./sign/index.html"; 
+                return;
+            } 
+
+            const res = await response.json();
+            alert(res.message || "An error occurred. Please try again.");
+            return;
+        }
+
+        const res = await response.json();
+        console.log(res);
+        alert("Book added to cart successfully");
 
     } catch (error) {
         console.log(error);
-        alert(error.message);
+        alert("An error occurred: " + error.message);
     }
-}
+};
 
 // make action when the user click on the product
