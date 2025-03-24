@@ -18,16 +18,16 @@ fetch("https://e-books-mu.vercel.app/user/getCart", {
 })
   .then((res) => res.json())
   .then((res) => {
-    console.log(res.data)
+    console.log(res.data);
     fillData(res.data);
   })
   .catch((error) => console.error("Error:", error));
 /* -------------------------------------------------------------------------- */
-function fillData(data){
-    let  = data ;
-    let drsh = "";
-    for( i = 0 ;  i < data.length; i++){
-        drsh += `
+function fillData(data) {
+  let = data;
+  let drsh = "";
+  for (i = 0; i < data.length; i++) {
+    drsh += `
         <tr>
         <td id="imgage">
           <img id="img" src="./imgs/book-1.png" alt="book image" />
@@ -62,8 +62,7 @@ function fillData(data){
         <td id="product-price">1000</td>
         <td id="product-total">1000</td>
       </tr>
-      `
-    }
-    document.getElementById("cart-data").innerHTML =drsh
-
+      `;
   }
+  document.getElementById("cart-data").innerHTML = drsh;
+}
