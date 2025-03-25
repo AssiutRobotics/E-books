@@ -1,4 +1,3 @@
-let { token } = JSON.parse(localStorage.getItem("data"));
 
 document.addEventListener("DOMContentLoaded", function () {
   let data = localStorage.getItem("data");
@@ -16,10 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   } else {
     console.log("لا توجد بيانات في Local Storage");
+    window.location.href = "../sign/index.html";
   }
 });
 
 /* --------------------------- get all cart data --------------------------- */
+let { token } = JSON.parse(localStorage.getItem("data"));
+
+if(!token){
+  window.location.href = "../sign/index.html";
+}
 
 fetch("https://e-books-mu.vercel.app/user/getCart", {
   method: "GET",
@@ -112,4 +117,12 @@ function deletBook(e) {
       location.reload();
     })
     .catch((error) => console.error("Error:", error));
+}
+
+/* --------------------------- logout --------------------------- */
+
+document.querySelector(".logout").addEventListener("click", logout);
+function logout() {
+  localStorage.removeItem("data");
+  window.location.href = "../";
 }

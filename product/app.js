@@ -63,3 +63,53 @@ document.getElementById('content').classList.add('hidden');
         });
     });
 }
+
+
+// add to cart
+{
+
+    document.getElementById('addToCart').addEventListener('click', async () => {
+        try {
+            const id = localStorage.getItem('book');
+            const data=JSON.parse(localStorage.getItem('data'));
+            
+            console.log("token is :",data.token);
+            
+            if(!data){
+                alert("Please login first");
+                return;
+            }
+            
+        const response = await fetch('https://e-books-mu.vercel.app/user/addToCart',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${data.token}`
+            },
+            body: JSON.stringify({ bookId: id,quantity:1 })
+        })
+    
+        const res = await response.json();
+        console.log(res);
+        if(res.status!="success"){
+            alert(res.message);
+            window.location.href = '../sign/index.html';
+            return;
+        }
+        
+        alert("Book added to cart successfully");
+    
+        } catch (error) {
+            console.log(error);
+
+            alert(error.message);
+            window.location.href = '../sign/index.html';
+
+        }
+    })
+    
+}
+
+
+
+

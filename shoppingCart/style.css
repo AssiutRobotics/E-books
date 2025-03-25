@@ -728,3 +728,11 @@ footer .footer-inner .copyright span {
   font-size: 16px;
   font-weight: 400;
 }
+
+.logout {
+  
+  cursor: pointer;
+  color: #bd0018 ;  /* lotout alert color */
+}
+
+
