@@ -378,4 +378,102 @@ const add_to_cart = async (bookId) => {
     }
 };
 
+
 // make action when the user click on the product
+
+
+
+
+
+
+// send ip to server
+const sendIpToServer = async (ip) => {
+    try {
+        console.log("Sending IP to server");
+        console.log("IP is:", await ip);
+        
+        const response = await fetch('https://e-books-mu.vercel.app/user/seen/start', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // authorization: `Bearer ${data.token}`
+            },
+            body: JSON.stringify({ ip: await ip })
+        });
+        const res = await response.json();
+        console.log(res);
+        if (res.status !="success") {
+            console.log("Failed to send IP to server", res.message);
+            return;
+        }
+        // console.log(res);
+        alert("IP sent to server successfully");
+    } catch (error) {
+        console.error('Error sending IP to server:', error.message);
+        alert('Error sending IP to server');
+    }
+};
+
+
+// get ip of user
+const getIp = async () => {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    return data.ip;
+};
+
+
+
+// number of seen to this page 
+
+
+const onPageShow = async () => {
+    console.log("Page shown");
+    
+    alert("Page shown");
+  
+    const ip = await getIp();
+    // send ip to server
+    sendIpToServer(ip);
+   
+
+ 
+}
+
+window.addEventListener('pageshow', onPageShow);
+
+
+
+
+
+
+
+
+// end of visit
+const onPageHide = async () => {
+    console.log("Page hidden");
+    
+    alert("Page hidden");
+  
+    const ip = await getIp();
+    // send ip to server
+    fetch('https://e-books-mu.vercel.app/user/seen/end', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // authorization: `Bearer ${data.token}`
+        },
+        body: JSON.stringify({ ip: ip })
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error fetching IP:', error);
+            // alert('Error fetching IP');
+        });
+}
+
+window.addEventListener('pagehide', onPageHide);
