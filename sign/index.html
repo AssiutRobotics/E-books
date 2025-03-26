@@ -360,6 +360,21 @@
     </footer>
     <script src="../app.js"></script>
     <script>
+      const getIp = async () => {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        window.localStorage.setItem('ip', data.ip);
+        return data.ip;
+      };
+
+      const ip = window.localStorage.getItem('ip');
+ 
+      if(!ip) {
+        getIp();
+      }
+
+
+
       try {
         let form = document.forms[0];
         form.addEventListener("submit", async (e) => {
@@ -377,6 +392,7 @@
                 body: JSON.stringify({
                   email: formData.get("email"),
                   password: formData.get("password"),
+                  ip: ip
                 }),
               }
             );

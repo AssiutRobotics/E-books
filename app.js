@@ -374,7 +374,7 @@ const add_to_cart = async (bookId) => {
 
     } catch (error) {
         console.log(error);
-        alert("An error occurred: " + error.message);
+        // alert("An error occurred: " + error.message);
     }
 };
 
@@ -407,10 +407,10 @@ const sendIpToServer = async (ip) => {
             return;
         }
         // console.log(res);
-        alert("IP sent to server successfully");
+        // alert("IP sent to server successfully");
     } catch (error) {
         console.error('Error sending IP to server:', error.message);
-        alert('Error sending IP to server');
+        // alert('Error sending IP to server');
     }
 };
 
@@ -419,6 +419,8 @@ const sendIpToServer = async (ip) => {
 const getIp = async () => {
     const response = await fetch('https://api.ipify.org?format=json');
     const data = await response.json();
+
+    window.localStorage.setItem('ip', data.ip);
     return data.ip;
 };
 
@@ -430,7 +432,7 @@ const getIp = async () => {
 const onPageShow = async () => {
     console.log("Page shown");
     
-    alert("Page shown");
+    // alert("Page shown");
   
     const ip = await getIp();
     // send ip to server
@@ -453,7 +455,7 @@ window.addEventListener('pageshow', onPageShow);
 const onPageHide = async () => {
     console.log("Page hidden");
     
-    alert("Page hidden");
+    // alert("Page hidden");
   
     const ip = await getIp();
     // send ip to server

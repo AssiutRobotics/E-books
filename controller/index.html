@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>dashboard</title>
+    <style>
+        /* styling table of guests */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        /* styling guests */
+        .guests {
+            width: 100%;
+        }
+        .guests_info {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .guests_info_content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .guests_info_content_title {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .guests_info_content_number {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .guests_info_content_number h2 {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- number of guests -->
+<div class="guests">
+    <div class="guests_info">
+        <div class="guests_info_content">
+            <div class="guests_info_content_title">
+                <h2>Number of Guests</h2>
+            </div>
+            <div class="guests_info_content_number">
+                <h2 id="numberOfGuests">0</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- table to show the data fo guests and number of visits and start visit and end visit and time spent -->
+
+<table id="table">
+    <thead>
+        <tr>
+            <th>Guests</th>
+            <th>Number of Visits</th>
+            <th>Start Visit</th>
+            <th>End Visit</th>
+            <th>Time Spent</th>
+        </tr>
+    </thead>
+    <tbody>
+ 
+    </tbody>
+</table>
+
+
+
+
+<!-- number of users -->
+<div class="users">
+    <div class="users_info">
+        <div class="users_info_content">
+            <div class="users_info_content_title">
+                <h2>Number of Users</h2>
+            </div>
+            <div class="users_info_content_number">
+                <h2 id="numberOfUsers">0</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table id="table2">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Number of Visits</th>
+            <th>Start Visit</th>
+            <th>End Visit</th>
+            <th>Time Spent</th>
+        </tr>
+    </thead>
+    <tbody>
+ 
+    </tbody>
+</table>
+
+
+
+
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
